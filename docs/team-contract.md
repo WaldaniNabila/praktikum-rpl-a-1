@@ -1,4 +1,4 @@
-# Team Contract - [Nama Project]
+# Team Contract - Sistem Manajemen Campaign dan Talent Buzzer
 
 Dokumen ini merupakan kesepakatan resmi anggota tim untuk memastikan kelancaran kolaborasi selama praktikum Rekayasa Perangkat Lunak (RPL).
 
