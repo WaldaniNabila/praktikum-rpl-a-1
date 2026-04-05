@@ -1,4 +1,4 @@
-# Team Contract - Sistem Manajemen Campaign dan Talent Buzzer
+# Team Contract - Sistem Informasi Lowongan Kerja Terintegrasi Berbasis Web
 
 Dokumen ini merupakan kesepakatan resmi anggota tim untuk memastikan kelancaran kolaborasi selama praktikum Rekayasa Perangkat Lunak (RPL).
 
