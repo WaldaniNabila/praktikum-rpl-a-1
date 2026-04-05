@@ -4,7 +4,12 @@ Dokumen ini merupakan kesepakatan resmi anggota tim untuk memastikan kelancaran 
 
 ## 1. Peran Anggota Tim (Team Roles)
 Setiap anggota bertanggung jawab atas tugas utama berikut:
-
+| Nama               | NIM      | Role                              |
+|--------------------|----------|-----------------------------------|
+| Waldani Nabila     | L0124122 | Lead Developer & Backend          |
+| Argya Seno         | L0124004 | UI/UX Designer & Frontend         |
+| Izanahda Nurkhasna | L0124019 | Quality Assurance (QA) & Frontend |
+| Intan Trinanda     | L0124018 | Documentation & Technical Writer  |
 * **Waldani Nabila Tamamah**: **Lead Developer & Backend**
   * Bertanggung jawab atas desain arsitektur sistem dan struktur basis data (SQL).
   * Mengelola logika bisnis di sisi server dan integrasi API.
