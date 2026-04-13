@@ -35,16 +35,3 @@
 | **Should-have** | 5 | US-06, US-08, US-10, US-11, US-13, US-14 |
 | **Could-have** | 4 | US-12, US-15, US-16, US-19 |
 | **Won't-have** | 1 | US-20 |
-
----
-
-## Definisi MVP (Minimum Viable Product)
-
-Fitur minimum yang harus selesai agar JOBHUB dapat didemonstrasikan:
-
-1. ✅ Registrasi & login untuk semua role (pelamar, perusahaan, admin)
-2. ✅ Pelamar dapat mencari dan melihat detail lowongan
-3. ✅ Pelamar dapat melamar pekerjaan
-4. ✅ Perusahaan dapat memposting lowongan
-5. ✅ Admin dapat menyetujui lowongan
-6. ✅ Admin dapat memverifikasi akun perusahaan
