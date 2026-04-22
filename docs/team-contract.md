@@ -6,11 +6,11 @@ Dokumen ini merupakan kesepakatan resmi anggota tim untuk memastikan kelancaran 
 Setiap anggota bertanggung jawab atas tugas utama berikut:
 | Nama               | NIM      | Role                              |
 |--------------------|----------|-----------------------------------|
-| Waldani Nabila     | L0124122 | Lead Developer & Backend          |
-| Argya Seno         | L0124004 | UI/UX Designer & Frontend         |
+| Argya Seno         | L0124004 | Lead Developer & Backend          |
+| Waldani Nabila     | L0124122 | UI/UX Designer & Frontend         |
 | Izanahda Nurkhasna | L0124019 | Quality Assurance (QA) & Frontend |
 | Intan Trinanda     | L0124018 | Documentation & Technical Writer  |
-* **Waldani Nabila Tamamah**: **Lead Developer & Backend**
+* **Argya Seno**: **Lead Developer & Backend**
   * Bertanggung jawab atas desain arsitektur sistem dan struktur basis data (SQL).
   * Mengelola logika bisnis di sisi server dan integrasi API.
   * Melakukan peninjauan kode (*code review*) pada setiap Pull Request untuk menjaga kualitas kode di repositori.
@@ -25,7 +25,7 @@ Setiap anggota bertanggung jawab atas tugas utama berikut:
   * Mengelola dokumentasi teknis dalam repositori seperti file README, Wiki, dan dokumentasi endpoint API.
   * Memastikan seluruh artefak proyek (diagram UML, ERD) terdokumentasi dengan rapi sesuai standar RPL.
 
-* **Argya Seno**: **UI/UX Designer & Frontend**
+* **Waldani Nabila Tamamah**: **UI/UX Designer & Frontend**
   * Bertanggung jawab atas riset pengalaman pengguna dan pembuatan desain *high-fidelity* (Mockup) serta Prototype.
   * Mengimplementasikan desain antarmuka menjadi kode frontend yang responsif dan user-friendly.
   * Memastikan konsistensi visual (warna, tipografi, dan aset gambar) di seluruh bagian aplikasi.
