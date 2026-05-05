@@ -6,11 +6,11 @@
 | users         | id              | INT           | PK, AUTO_INCREMENT             | ID unik pengguna                   |
 | users         | name            | VARCHAR(100)  | NOT NULL                       | Nama pengguna                      |
 | users         | email           | VARCHAR(255)  | UNIQUE, NOT NULL               | Email untuk login                  |
-| users         | password        | VARCHAR(255)  | NOT NULL                       | Password (hasheed, misal bcrypt)   |
+| users         | password        | VARCHAR(255)  | NOT NULL                       | Password (hashed, misal bcrypt)   |
 | users         | role            | ENUM          | NOT NULL                       | Peran user (admin/user/company)    |
 | users         | phone           | VARCHAR(20)   | NULL                           | Nomor telepon pengguna             |
-| users         | cv-path         | VARCHAR(255)  | NULL                           | Path file CV                       |
-| users         | created_at      | TIMESTAMP     | DEFAULT CURRENT-TIMESTAMP      | Waktu pembuatan akun               |
+| users         | cv_path         | VARCHAR(255)  | NULL                           | Path file CV                       |
+| users         | created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP      | Waktu pembuatan akun               |
 
 ## Tabel COMPANIES
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
