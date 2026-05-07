@@ -1,6 +1,6 @@
 # DATA DICTIONARY
 
-## Tabel USERS
+## Tabel users
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
 |---------------|-----------------|---------------|--------------------------------|------------------------------------|
 | users         | id              | INT           | PK, AUTO_INCREMENT             | ID unik pengguna                   |
@@ -12,7 +12,7 @@
 | users         | cv_path         | VARCHAR(255)  | NULL                           | Path file CV                       |
 | users         | created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP      | Waktu pembuatan akun               |
 
-## Tabel COMPANIES
+## Tabel companies
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
 |---------------|-----------------|---------------|--------------------------------|------------------------------------|
 | companies     | id              | INT           | PK, AUTO_INCREMENT             | ID unik perusahaan                 |
@@ -24,14 +24,14 @@
 | companies     | status          | ENUM          | NOT NULL                       | Status perusahaan                  |
 | companies     | created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP      | Waktu dibuat                       |
 
-## Tabel CATEGORIES
+## Tabel categories
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
 |---------------|-----------------|---------------|--------------------------------|------------------------------------|
 | categories    | id              | INT           | PK, AUTO_INCREMENT             | ID kategori                        |
 | categories    | name            | VARCHAR(100)  | NOT NULL                       | Nama kategori                      |
 | categories    | slug            | VARCHAR(100)  | UNIQUE, NOT NULL               | URL slug kategori                  |
 
-## Tabel JOBS
+## Tabel jobs
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
 |---------------|-----------------|---------------|--------------------------------|------------------------------------|
 | jobs          | id              | INT           | PK, AUTO_INCREMENT             | ID pekerjaan                       |
@@ -49,7 +49,7 @@
 | jobs          | is_open         | BOOLEAN       | DEFAULT TRUE                   | Apakah lowongan masih dibuka       |
 | jobs          | created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP      | Waktu dibuat                       |
 
-## Tabel APPLICATIONS
+## Tabel applications
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
 |---------------|-----------------|---------------|--------------------------------|------------------------------------|
 | applications  | id              | INT           | PK, AUTO_INCREMENT             | ID lamaran                         |
@@ -60,7 +60,7 @@
 | applications  | status          | ENUM          | NOT NULL                       | Status lamaran                     |
 | applicatons   | created_at      | TIMESTAMP     | DEFAULT CURRENT_TIMESTAMP      | Waktu melamar                      |
 
-## Tabel BOOKMARKS
+## Tabel bookmarks
 |     Tabel     |      Kolom      |   Tipe Data   |           Constraint           |             Keterangan             |
 |---------------|-----------------|---------------|--------------------------------|------------------------------------|
 | bookmarks     | id              | INT           | PK, AUTO_INCREMENT             | ID bookmark                        |
