@@ -4,15 +4,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobListingController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\JobSeeker\DashboardController as JobSeekerDashboard;
 use App\Http\Controllers\Company\DashboardController as CompanyDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use Illuminate\Support\Facades\Route;
 
 // ─── PUBLIC ──────────────────────────────────────────────────────────────────
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LandingController::class, 'index'])->name('home');
 
 // Lowongan publik
 Route::get('/lowongan', [JobListingController::class, 'index'])->name('jobs.index');
