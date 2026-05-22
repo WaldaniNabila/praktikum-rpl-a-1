@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use App\Models\JobSeeker;
+use App\Models\Company;
 
 class RegisteredUserController extends Controller
 {
@@ -47,12 +49,28 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        $role = auth ::user()->role;
-        return match ($user->role) {
-            'admin' => redirect()->intended('/admin/dashboard'),
-            'company' => redirect()->intended('/company/dashboard'),
-            'job_seeker' => redirect()->intended('/job-seeker/dashboard'),
-            default => redirect()->intended('/dashboard'),
+
+        if ($user->role === 'job_seeker') {
+            JobSeeker::create([
+                'user_id' => $user->id,
+                
+            ]);
+        } elseif ($user->role === 'company') {
+            Company::create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'industry' => '-',
+                'status' => 'pending',
+            ]);
+        }
+
+        $role = $user->role;
+        return match ($role) {
+            'admin' => redirect()->route('admin.dashboard'),
+            'company' => redirect()->route('company.dashboard'),
+            'job_seeker' => redirect()->route('job_seeker.dashboard'),
+            default => redirect()->route('dashboard'),
+
         };
     }
 }
