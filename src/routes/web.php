@@ -18,7 +18,7 @@ Route::get('/lowongan', [JobListingController::class, 'index'])->name('jobs.inde
 Route::get('/lowongan/{jobListing}', [JobListingController::class, 'show'])->name('jobs.show');
 
 // ─── JOB SEEKER ──────────────────────────────────────────────────────────────
-Route::middleware(['auth'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
+Route::middleware(['auth', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
     Route::get('/dashboard',     [JobSeekerDashboard::class, 'index'])->name('dashboard');
     Route::get('/lamaran',       [JobSeekerDashboard::class, 'applications'])->name('applications');
     Route::get('/profil',        [JobSeekerDashboard::class, 'profile'])->name('profile');
@@ -31,10 +31,11 @@ Route::middleware(['auth'])->prefix('job-seeker')->name('job_seeker.')->group(fu
     // Bookmark
     Route::post('/bookmark/{jobListing}',     [BookmarkController::class, 'toggle'])->name('bookmark.toggle');
     Route::get('/tersimpan',                  [BookmarkController::class, 'index'])->name('bookmarks');
+    
 });
 
 // ─── COMPANY ─────────────────────────────────────────────────────────────────
-Route::middleware(['auth'])->prefix('company')->name('company.')->group(function () {
+Route::middleware(['auth', 'role:company'])->prefix('company')->name('company.')->group(function () {
     Route::get('/dashboard',                  [CompanyDashboard::class, 'index'])->name('dashboard');
     Route::get('/lowongan',                   [CompanyDashboard::class, 'jobs'])->name('jobs');
     Route::get('/lowongan/buat',              [CompanyDashboard::class, 'createJob'])->name('jobs.create');
@@ -47,7 +48,7 @@ Route::middleware(['auth'])->prefix('company')->name('company.')->group(function
 });
 
 // ─── ADMIN ───────────────────────────────────────────────────────────────────
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard',                  [AdminDashboard::class, 'index'])->name('dashboard');
 
     // Kelola lowongan
