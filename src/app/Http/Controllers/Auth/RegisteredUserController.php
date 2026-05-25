@@ -53,13 +53,15 @@ class RegisteredUserController extends Controller
         if ($user->role === 'job_seeker') {
             JobSeeker::create([
                 'user_id' => $user->id,
-                
+                'phone' => $request->phone,
             ]);
         } elseif ($user->role === 'company') {
             Company::create([
                 'user_id' => $user->id,
                 'name' => $user->name,
-                'industry' => '-',
+                'industry' => $request->industry ?? '-',
+                'phone' => $request->phone,
+                'address' => $request->address,
                 'status' => 'pending',
             ]);
         }

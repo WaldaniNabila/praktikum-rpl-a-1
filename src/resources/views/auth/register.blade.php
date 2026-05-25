@@ -28,7 +28,7 @@
                     <p class="text-sm leading-7 text-slate-500 text-center">Posting lowongan dan cari kandidat terbaik untuk perusahaanmu.</p>
                 </button>
 
-                <button type="button" @click="selectedRole = 'pelamar'; subtitle = 'Lengkapi data untuk membuat akun'" class="role-card w-full max-w-sm rounded-[1.5rem] bg-slate-50 p-8 text-left transition duration-300 hover:-translate-y-1 hover:border-sky-500 hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)] border-2 border-transparent">
+                <button type="button" @click="selectedRole = 'job_seeker'; subtitle = 'Lengkapi data untuk membuat akun'" class="role-card w-full max-w-sm rounded-[1.5rem] bg-slate-50 p-8 text-left transition duration-300 hover:-translate-y-1 hover:border-sky-500 hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)] border-2 border-transparent">
                     <div class="flex justify-center mb-6">
                         <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Job seeker icon" class="h-20 w-20 object-contain" />
                     </div>
@@ -52,66 +52,66 @@
                         <div class="space-y-6">
                             <div class="space-y-2">
                                 <label for="companyName" class="block text-sm font-semibold text-slate-700">Nama Perusahaan</label>
-                                <input id="companyName" name="company_name" type="text" value="{{ old('company_name') }}" placeholder="Nama perusahaan" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <x-input-error :messages="$errors->get('company_name')" class="mt-2 text-sm text-red-600" />
+                                <input id="companyName" name="name" type="text" value="{{ old('name') }}" placeholder="Nama perusahaan" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2 text-sm text-red-600" />
                             </div>
 
                             <div class="space-y-2">
                                 <label for="companyEmail" class="block text-sm font-semibold text-slate-700">Email Perusahaan</label>
-                                <input id="companyEmail" name="company_email" type="email" value="{{ old('company_email') }}" placeholder="Email perusahaan" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <x-input-error :messages="$errors->get('company_email')" class="mt-2 text-sm text-red-600" />
+                                <input id="companyEmail" name="email" type="email" value="{{ old('email') }}" placeholder="Email perusahaan" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
                             </div>
 
                             <div class="space-y-2">
                                 <label for="companyPhone" class="block text-sm font-semibold text-slate-700">Nomor Telepon</label>
-                                <input id="companyPhone" name="company_phone" type="text" value="{{ old('company_phone') }}" placeholder="Nomor telepon" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <x-input-error :messages="$errors->get('company_phone')" class="mt-2 text-sm text-red-600" />
+                                <input id="companyPhone" name="phone" type="text" value="{{ old('phone') }}" placeholder="Nomor telepon" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                                <x-input-error :messages="$errors->get('phone')" class="mt-2 text-sm text-red-600" />
                             </div>
 
                             <div class="space-y-2">
                                 <label for="companyField" class="block text-sm font-semibold text-slate-700">Bidang Perusahaan</label>
-                                <select id="companyField" name="company_field" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">
+                                <select id="companyField" name="industry" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">
                                     <option value="">Pilih Bidang</option>
-                                    <option value="Technology" {{ old('company_field') == 'Technology' ? 'selected' : '' }}>Technology</option>
-                                    <option value="Finance" {{ old('company_field') == 'Finance' ? 'selected' : '' }}>Finance</option>
-                                    <option value="Education" {{ old('company_field') == 'Education' ? 'selected' : '' }}>Education</option>
-                                    <option value="Creative" {{ old('company_field') == 'Creative' ? 'selected' : '' }}>Creative</option>
+                                    <option value="Technology" {{ old('industry') == 'Technology' ? 'selected' : '' }}>Technology</option>
+                                    <option value="Finance" {{ old('industry') == 'Finance' ? 'selected' : '' }}>Finance</option>
+                                    <option value="Education" {{ old('industry') == 'Education' ? 'selected' : '' }}>Education</option>
+                                    <option value="Creative" {{ old('industry') == 'Creative' ? 'selected' : '' }}>Creative</option>
                                 </select>
-                                <x-input-error :messages="$errors->get('company_field')" class="mt-2 text-sm text-red-600" />
+                                <x-input-error :messages="$errors->get('industry')" class="mt-2 text-sm text-red-600" />
                             </div>
                         </div>
                     </template>
 
-                    <template x-if="selectedRole === 'pelamar'">
+                    <template x-if="selectedRole === 'job_seeker'">
                         <div class="space-y-6">
                             <div class="space-y-2">
                                 <label for="pelamarName" class="block text-sm font-semibold text-slate-700">Nama Lengkap</label>
-                                <input id="pelamarName" name="pelamar_name" type="text" value="{{ old('pelamar_name') }}" placeholder="Nama lengkap" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <x-input-error :messages="$errors->get('pelamar_name')" class="mt-2 text-sm text-red-600" />
+                                <input id="pelamarName" name="name" type="text" value="{{ old('name') }}" placeholder="Nama lengkap" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2 text-sm text-red-600" />
                             </div>
 
                             <div class="space-y-2">
                                 <label for="pelamarEmail" class="block text-sm font-semibold text-slate-700">Email</label>
-                                <input id="pelamarEmail" name="pelamar_email" type="email" value="{{ old('pelamar_email') }}" placeholder="Email" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <x-input-error :messages="$errors->get('pelamar_email')" class="mt-2 text-sm text-red-600" />
+                                <input id="pelamarEmail" name="email" type="email" value="{{ old('email') }}" placeholder="Email" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                                <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-600" />
                             </div>
 
                             <div class="space-y-2">
                                 <label for="pelamarPhone" class="block text-sm font-semibold text-slate-700">Nomor HP</label>
-                                <input id="pelamarPhone" name="pelamar_phone" type="text" value="{{ old('pelamar_phone') }}" placeholder="Nomor HP" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <x-input-error :messages="$errors->get('pelamar_phone')" class="mt-2 text-sm text-red-600" />
+                                <input id="pelamarPhone" name="phone" type="text" value="{{ old('phone') }}" placeholder="Nomor HP" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                                <x-input-error :messages="$errors->get('phone')" class="mt-2 text-sm text-red-600" />
                             </div>
 
                             <div class="space-y-2">
                                 <label for="pelamarEducation" class="block text-sm font-semibold text-slate-700">Pendidikan</label>
-                                <select id="pelamarEducation" name="pelamar_education" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">
+                                <select id="pelamarEducation" name="education" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">
                                     <option value="">Pilih Pendidikan</option>
-                                    <option value="SMA/SMK" {{ old('pelamar_education') == 'SMA/SMK' ? 'selected' : '' }}>SMA/SMK</option>
-                                    <option value="D3" {{ old('pelamar_education') == 'D3' ? 'selected' : '' }}>D3</option>
-                                    <option value="S1" {{ old('pelamar_education') == 'S1' ? 'selected' : '' }}>S1</option>
-                                    <option value="S2" {{ old('pelamar_education') == 'S2' ? 'selected' : '' }}>S2</option>
+                                    <option value="SMA/SMK" {{ old('education') == 'SMA/SMK' ? 'selected' : '' }}>SMA/SMK</option>
+                                    <option value="D3" {{ old('education') == 'D3' ? 'selected' : '' }}>D3</option>
+                                    <option value="S1" {{ old('education') == 'S1' ? 'selected' : '' }}>S1</option>
+                                    <option value="S2" {{ old('education') == 'S2' ? 'selected' : '' }}>S2</option>
                                 </select>
-                                <x-input-error :messages="$errors->get('pelamar_education')" class="mt-2 text-sm text-red-600" />
+                                <x-input-error :messages="$errors->get('education')" class="mt-2 text-sm text-red-600" />
                             </div>
                         </div>
                     </template>
