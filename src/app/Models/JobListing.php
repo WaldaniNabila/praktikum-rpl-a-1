@@ -47,7 +47,7 @@ class JobListing extends Model
     // Relasi ke Applications (1:N)
     public function applications()
     {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(Application::class, 'job_id');
     }
 
     // Relasi ke Bookmarks (1:N)

@@ -56,33 +56,33 @@ class DashboardController extends Controller
         return view('job_seeker.profile', compact('jobSeeker'));
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(\App\Http\Requests\UpdateJobSeekerProfileRequest $request)
     {
-        $request->validate([
-            'phone'           => ['nullable', 'string', 'max:20'],
-            'description'     => ['nullable', 'string', 'max:500'],
-            'profile_picture' => ['nullable', 'image', 'max:2048'],
-            'cv_path'         => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
+        $user = Auth::user();
+        $jobSeeker = $user->jobSeeker;
+
+        // Update User table (name)
+        $user->update([
+            'name' => $request->name,
         ]);
 
-        $jobSeeker = Auth::user()->jobSeeker;
+        $data = $request->except(['name']);
 
         if ($request->hasFile('profile_picture')) {
-            $jobSeeker->profile_picture = $request->file('profile_picture')
-                ->store('profile_pictures', 'public');
+            if ($jobSeeker->profile_picture) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->profile_picture);
+            }
+            $data['profile_picture'] = $request->file('profile_picture')->store('profile_pictures', 'public');
         }
 
         if ($request->hasFile('cv_path')) {
-            $jobSeeker->cv_path = $request->file('cv_path')
-                ->store('cv', 'public');
+            if ($jobSeeker->cv_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->cv_path);
+            }
+            $data['cv_path'] = $request->file('cv_path')->store('cv', 'public');
         }
 
-        $jobSeeker->update([
-            'phone'           => $request->phone,
-            'description'     => $request->description,
-            'profile_picture' => $jobSeeker->profile_picture,
-            'cv_path'         => $jobSeeker->cv_path,
-        ]);
+        $jobSeeker->update($data);
 
         return back()->with('success', 'Profil berhasil diupdate!');
     }
