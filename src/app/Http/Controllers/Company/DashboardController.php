@@ -116,7 +116,7 @@ class DashboardController extends Controller
             'is_open'         => true,
         ]);
 
-        return redirect()->route('company.jobs')
+        return redirect()->route('company.dashboard')
             ->with('success', 'Lowongan berhasil diposting! Menunggu persetujuan admin.');
     }
 
@@ -147,7 +147,7 @@ class DashboardController extends Controller
 
         $jobListing->update($request->all());
 
-        return redirect()->route('company.jobs')
+        return redirect()->route('company.dashboard')
             ->with('success', 'Lowongan berhasil diupdate!');
     }
 
@@ -156,7 +156,7 @@ class DashboardController extends Controller
     {
         $this->authorizeJob($jobListing);
         $jobListing->delete();
-        return redirect()->route('company.jobs')
+        return redirect()->route('company.dashboard')
             ->with('success', 'Lowongan berhasil dihapus!');
     }
 
