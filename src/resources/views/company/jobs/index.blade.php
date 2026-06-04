@@ -47,6 +47,15 @@
                                         <td class="py-4 text-slate-500 capitalize">{{ str_replace('-', ' ', $job->employment_type) }}</td>
                                         <td class="py-4 font-black text-slate-900">{{ $job->applications ? $job->applications->count() : 0 }}</td>
                                         <td class="py-4">
+                                            <div class="mb-2">
+                                                @if($job->status === 'approved')
+                                                    <span class="inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-700 border border-blue-100 uppercase tracking-wider">Disetujui Admin</span>
+                                                @elseif($job->status === 'rejected')
+                                                    <span class="inline-flex rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700 border border-red-100 uppercase tracking-wider">Ditolak</span>
+                                                @else
+                                                    <span class="inline-flex rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700 border border-amber-100 uppercase tracking-wider">Menunggu Persetujuan</span>
+                                                @endif
+                                            </div>
                                             @if($job->is_open)
                                                 <span class="inline-flex rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-100">Open</span>
                                             @else

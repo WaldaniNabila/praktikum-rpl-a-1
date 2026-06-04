@@ -143,6 +143,7 @@ class DashboardController extends Controller
             'work_type'       => ['required', 'in:remote,on-site,hybrid'],
             'salary_min'      => ['nullable', 'integer'],
             'salary_max'      => ['nullable', 'integer'],
+            'is_open'         => ['required', 'boolean'],
         ]);
 
         $jobListing->update($request->all());
