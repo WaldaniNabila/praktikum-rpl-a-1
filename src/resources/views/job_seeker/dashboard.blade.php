@@ -24,9 +24,10 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="h-12 w-12 overflow-hidden rounded-full border border-slate-200 shadow-sm bg-slate-100 shrink-0 flex items-center justify-center text-xl font-bold text-blue-600">
+                            <div class="h-12 w-12 overflow-hidden rounded-full border border-slate-200 shadow-sm bg-slate-100 shrink-0 flex items-center justify-center text-xl font-bold text-blue-600 relative">
                                 @if(isset($jobSeeker) && $jobSeeker->profile_picture)
-                                    <img src="{{ asset('storage/' . $jobSeeker->profile_picture) }}" alt="Avatar" class="h-full w-full object-cover">
+                                    <img src="{{ asset('storage/' . $jobSeeker->profile_picture) }}" alt="Avatar" class="h-full w-full object-cover z-10" onerror="this.style.display='none'">
+                                    <span class="absolute inset-0 flex items-center justify-center">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                                 @else
                                     {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                                 @endif
