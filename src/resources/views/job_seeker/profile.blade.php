@@ -1,9 +1,14 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profil Pelamar') }}
-        </h2>
-    </x-slot>
+    <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Profil Pelamar') }}
+            </h2>
+            <a href="{{ route('job_seeker.dashboard') }}" class="text-sm font-medium text-blue-600 hover:underline">
+                &larr; Kembali ke Dashboard
+            </a>
+        </div>
+    </div>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
