@@ -8,13 +8,14 @@
     <title>{{ config('app.name', 'JobHub') }} - Login</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="min-h-screen bg-slate-100 font-sans text-slate-900">
     <div class="min-h-screen flex items-center justify-center px-4 py-10">
         <div x-data="{ showPassword: false }" class="w-full max-w-2xl rounded-[2rem] bg-white p-10 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
             <div class="mb-10 text-center">
                 <div class="text-5xl font-extrabold text-sky-600">JobHub</div>
-                <h1 class="mt-4 text-4xl font-bold text-slate-950">Selamat Datang 👋</h1>
+                <h1 class="mt-4 text-4xl font-bold text-slate-950">Selamat Datang</h1>
                 <p class="mt-3 text-base text-slate-500">Login untuk melanjutkan</p>
             </div>
 
@@ -54,9 +55,10 @@
                         <button
                             type="button"
                             x-on:click="showPassword = !showPassword"
-                            class="absolute inset-y-0 right-3 inline-flex items-center rounded-full bg-slate-100 px-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-200"
-                        >
-                            <span x-text="showPassword ? 'Sembunyikan' : 'Tampilkan'"></span>
+                            class="absolute inset-y-0 right-4 flex items-center text-slate-500 hover:text-sky-600">
+                            <i
+                                :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
+                            ></i>
                         </button>
                     </div>
                     <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />

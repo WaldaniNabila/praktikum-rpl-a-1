@@ -106,7 +106,6 @@
             @foreach($categories as $category)
                 <a href="{{ route('jobs.index', ['category' => $category->slug]) }}"
                    class="flex flex-col gap-2 p-4 rounded-xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50 transition-all group">
-                    <div class="w-8 h-8 rounded-lg bg-blue-100"></div>
                     <div>
                         <div class="text-sm font-medium text-gray-800 group-hover:text-blue-700 transition-colors">
                             {{ $category->name }}
