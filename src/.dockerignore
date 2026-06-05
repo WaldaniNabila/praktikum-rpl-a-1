@@ -13,3 +13,4 @@ storage/framework/views/*
 storage/logs/*
 public/build
 public/hot
+public/storage

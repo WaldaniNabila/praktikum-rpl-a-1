@@ -60,12 +60,12 @@
                                 <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Logo Perusahaan</label>
                                 <div class="mt-2 mb-4">
                                     @if(isset($company) && $company->logo_path)
-                                        <img src="{{ asset('storage/' . $company->logo_path) }}" alt="Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
+                                        <img id="logo-preview" src="{{ asset('storage/' . $company->logo_path) }}" alt="Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
                                     @else
-                                        <img src="{{ asset('images/default-avatar.svg') }}" alt="Default Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
+                                        <img id="logo-preview" src="{{ asset('images/default-avatar.svg') }}" alt="Default Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
                                     @endif
                                 </div>
-                                <input type="file" name="logo_path" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition">
+                                <input type="file" name="logo_path" accept="image/*" onchange="if(this.files[0]) document.getElementById('logo-preview').src = window.URL.createObjectURL(this.files[0])" class="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition">
                                 <p class="text-xs text-slate-400 mt-2">Format yang didukung: JPG, PNG, GIF. Maksimal ukuran 2MB.</p>
                             </div>
 

@@ -16,8 +16,21 @@
                     </div>
 
                     @if(session('success'))
-                        <div class="text-sm font-medium text-green-700 bg-green-50 px-4 py-3 rounded-xl border border-green-200">
+                        <div class="text-sm font-medium text-green-700 bg-green-50 px-4 py-3 rounded-xl border border-green-200 mb-4">
                             {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="bg-rose-50 border-l-4 border-rose-500 p-4 mb-4 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="text-rose-700 font-bold">Terjadi Kesalahan:</div>
+                            </div>
+                            <ul class="list-disc list-inside text-sm text-rose-600 mt-2">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     @endif
 
@@ -62,16 +75,16 @@
                                 <div class="space-y-6">
                                     <div>
                                         <label class="block text-sm font-bold text-slate-700 mb-2">Foto Profil (JPG/PNG)</label>
-                                        @if($jobSeeker->profile_picture)
-                                            <div class="mt-2 mb-4">
-                                                <img src="{{ asset('storage/' . $jobSeeker->profile_picture) }}" alt="Foto" class="w-32 h-32 object-cover rounded-full border-4 border-slate-100 shadow-md">
-                                            </div>
-                                        @else
-                                            <div class="mt-2 mb-4 w-32 h-32 rounded-full border-4 border-dashed border-slate-200 flex items-center justify-center text-slate-400 text-sm font-medium">
+                                        <div class="mt-2 mb-4" id="profile-preview-container" style="{{ $jobSeeker->profile_picture ? '' : 'display: none;' }}">
+                                            <img id="profile-preview" src="{{ $jobSeeker->profile_picture ? asset('storage/' . $jobSeeker->profile_picture) : '' }}" alt="Foto" class="w-32 h-32 object-cover rounded-full border-4 border-slate-100 shadow-md">
+                                        </div>
+                                        @if(!$jobSeeker->profile_picture)
+                                            <div id="no-profile-placeholder" class="mt-2 mb-4 w-32 h-32 rounded-full border-4 border-dashed border-slate-200 flex items-center justify-center text-slate-400 text-sm font-medium">
                                                 Belum ada foto
                                             </div>
                                         @endif
                                         <input type="file" id="profile_picture" name="profile_picture" accept="image/*"
+                                            onchange="if(this.files[0]) { document.getElementById('profile-preview-container').style.display='block'; document.getElementById('profile-preview').src = window.URL.createObjectURL(this.files[0]); var placeholder = document.getElementById('no-profile-placeholder'); if(placeholder) placeholder.style.display='none'; }"
                                             class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors" />
                                         @error('profile_picture') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                                     </div>
@@ -95,7 +108,9 @@
                                             </div>
                                         @endif
                                         <input type="file" id="cv_path" name="cv_path" accept=".pdf"
+                                            onchange="if(this.files[0]) { document.getElementById('cv-filename-preview').classList.remove('hidden'); document.getElementById('cv-filename').innerText = this.files[0].name; }"
                                             class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors" />
+                                        <p id="cv-filename-preview" class="mt-2 text-sm text-blue-600 font-medium hidden">File terpilih untuk diupload: <span id="cv-filename" class="font-bold"></span></p>
                                         @error('cv_path') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                                     </div>
                                 </div>

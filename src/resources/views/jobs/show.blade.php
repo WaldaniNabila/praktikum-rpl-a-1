@@ -90,7 +90,8 @@
                                                         </div>
                                                         <div>
                                                             <label class="block text-sm font-medium text-gray-700 mb-1">Upload CV Khusus (Opsional)</label>
-                                                            <input type="file" name="cv_path" accept=".pdf,.doc,.docx" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                                                            <input type="file" name="cv_path" accept=".pdf,.doc,.docx" onchange="if(this.files[0]) { document.getElementById('apply-cv-preview').classList.remove('hidden'); document.getElementById('apply-cv-filename').innerText = this.files[0].name; }" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                                                            <p id="apply-cv-preview" class="text-sm text-blue-600 font-medium hidden mt-1">File terpilih: <span id="apply-cv-filename" class="font-bold"></span></p>
                                                             <p class="text-xs text-gray-500 mt-1">Kosongkan jika ingin menggunakan CV default di profil Anda.</p>
                                                         </div>
                                                     </div>

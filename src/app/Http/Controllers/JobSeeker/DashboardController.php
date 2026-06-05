@@ -73,6 +73,8 @@ class DashboardController extends Controller
                 \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->profile_picture);
             }
             $data['profile_picture'] = $request->file('profile_picture')->store('profile_pictures', 'public');
+        } else {
+            unset($data['profile_picture']);
         }
 
         if ($request->hasFile('cv_path')) {
@@ -80,6 +82,8 @@ class DashboardController extends Controller
                 \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->cv_path);
             }
             $data['cv_path'] = $request->file('cv_path')->store('cv', 'public');
+        } else {
+            unset($data['cv_path']);
         }
 
         $jobSeeker->update($data);
