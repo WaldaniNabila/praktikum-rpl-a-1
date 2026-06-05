@@ -36,6 +36,39 @@ class DashboardController extends Controller
         ));
     }
 
+    // Tampilkan profil perusahaan
+    public function profile()
+    {
+        $company = Auth::user()->company;
+        return view('company.profile', compact('company'));
+    }
+
+    // Update profil perusahaan
+    public function updateProfile(\App\Http\Requests\UpdateCompanyProfileRequest $request)
+    {
+        $user = Auth::user();
+        $company = $user->company;
+
+        // Update User table (name & email)
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $data = $request->except(['name', 'email']);
+
+        if ($request->hasFile('logo_path')) {
+            if ($company->logo_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($company->logo_path);
+            }
+            $data['logo_path'] = $request->file('logo_path')->store('company_logos', 'public');
+        }
+
+        $company->update($data);
+
+        return back()->with('success', 'Profil perusahaan berhasil diupdate!');
+    }
+
     // Tampilkan semua lowongan perusahaan
     public function jobs()
     {
@@ -83,7 +116,7 @@ class DashboardController extends Controller
             'is_open'         => true,
         ]);
 
-        return redirect()->route('company.jobs')
+        return redirect()->route('company.dashboard')
             ->with('success', 'Lowongan berhasil diposting! Menunggu persetujuan admin.');
     }
 
@@ -110,11 +143,12 @@ class DashboardController extends Controller
             'work_type'       => ['required', 'in:remote,on-site,hybrid'],
             'salary_min'      => ['nullable', 'integer'],
             'salary_max'      => ['nullable', 'integer'],
+            'is_open'         => ['required', 'boolean'],
         ]);
 
         $jobListing->update($request->all());
 
-        return redirect()->route('company.jobs')
+        return redirect()->route('company.dashboard')
             ->with('success', 'Lowongan berhasil diupdate!');
     }
 
@@ -123,7 +157,7 @@ class DashboardController extends Controller
     {
         $this->authorizeJob($jobListing);
         $jobListing->delete();
-        return redirect()->route('company.jobs')
+        return redirect()->route('company.dashboard')
             ->with('success', 'Lowongan berhasil dihapus!');
     }
 

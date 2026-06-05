@@ -37,6 +37,8 @@ Route::middleware(['auth', 'role:job_seeker'])->prefix('job-seeker')->name('job_
 // ─── COMPANY ─────────────────────────────────────────────────────────────────
 Route::middleware(['auth', 'role:company'])->prefix('company')->name('company.')->group(function () {
     Route::get('/dashboard',                  [CompanyDashboard::class, 'index'])->name('dashboard');
+    Route::get('/profil',                     [CompanyDashboard::class, 'profile'])->name('profile');
+    Route::put('/profil',                     [CompanyDashboard::class, 'updateProfile'])->name('profile.update');
     Route::get('/lowongan',                   [CompanyDashboard::class, 'jobs'])->name('jobs');
     Route::get('/lowongan/buat',              [CompanyDashboard::class, 'createJob'])->name('jobs.create');
     Route::post('/lowongan',                  [CompanyDashboard::class, 'storeJob'])->name('jobs.store');
