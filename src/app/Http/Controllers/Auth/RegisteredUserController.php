@@ -66,13 +66,6 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-        $role = $user->role;
-        return match ($role) {
-            'admin' => redirect()->route('admin.dashboard'),
-            'company' => redirect()->route('company.dashboard'),
-            'job_seeker' => redirect()->route('job_seeker.dashboard'),
-            default => redirect()->route('dashboard'),
-
-        };
+        return redirect()->route('verification.notice');
     }
 }
