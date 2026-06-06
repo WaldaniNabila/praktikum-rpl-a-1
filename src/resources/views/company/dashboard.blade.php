@@ -28,11 +28,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="h-12 w-12 overflow-hidden rounded-full border border-slate-200 shadow-sm bg-slate-300 shrink-0">
+                            <div class="h-12 w-12 overflow-hidden rounded-full border border-slate-200 shadow-sm bg-blue-100 shrink-0 flex items-center justify-center">
                                 @if(isset($company) && $company->logo_path)
                                     <img src="{{ asset('storage/' . $company->logo_path) }}" alt="Avatar" class="h-full w-full object-cover">
                                 @else
-                                    <img src="{{ asset('images/default-avatar.svg') }}" alt="Avatar" class="h-full w-full object-cover">
+                                    <span class="text-sm font-black text-blue-600">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                                 @endif
                             </div>
                         </div>
