@@ -18,7 +18,7 @@ Route::get('/lowongan', [JobListingController::class, 'index'])->name('jobs.inde
 Route::get('/lowongan/{jobListing}', [JobListingController::class, 'show'])->name('jobs.show');
 
 // ─── JOB SEEKER ──────────────────────────────────────────────────────────────
-Route::middleware(['auth', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
+Route::middleware(['auth', 'verified', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
     Route::get('/dashboard',     [JobSeekerDashboard::class, 'index'])->name('dashboard');
     Route::get('/lamaran',       [JobSeekerDashboard::class, 'applications'])->name('applications');
     Route::get('/profil',        [JobSeekerDashboard::class, 'profile'])->name('profile');
@@ -35,7 +35,7 @@ Route::middleware(['auth', 'role:job_seeker'])->prefix('job-seeker')->name('job_
 });
 
 // ─── COMPANY ─────────────────────────────────────────────────────────────────
-Route::middleware(['auth', 'role:company'])->prefix('company')->name('company.')->group(function () {
+Route::middleware(['auth', 'verified', 'role:company'])->prefix('company')->name('company.')->group(function () {
     Route::get('/dashboard',                  [CompanyDashboard::class, 'index'])->name('dashboard');
     Route::get('/profil',                     [CompanyDashboard::class, 'profile'])->name('profile');
     Route::put('/profil',                     [CompanyDashboard::class, 'updateProfile'])->name('profile.update');
@@ -61,6 +61,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     // Kelola user
     Route::get('/users',                      [AdminDashboard::class, 'users'])->name('users');
     Route::put('/users/{user}/toggle',        [AdminDashboard::class, 'toggleUser'])->name('users.toggle');
+    Route::delete('/users/{user}',            [AdminDashboard::class, 'destroyUser'])->name('users.destroy');
 
     // Kelola perusahaan
     Route::get('/perusahaan',                 [AdminDashboard::class, 'companies'])->name('companies');
@@ -75,7 +76,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 
 // ─── BREEZE AUTH ─────────────────────────────────────────────────────────────
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = auth()->user();
+    return match ($user->role) {
+        'admin'      => redirect()->route('admin.dashboard'),
+        'company'    => redirect()->route('company.dashboard'),
+        'job_seeker' => redirect()->route('job_seeker.dashboard'),
+        default      => abort(403),
+    };
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
