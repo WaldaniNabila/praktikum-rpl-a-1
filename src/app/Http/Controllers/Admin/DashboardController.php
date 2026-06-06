@@ -66,7 +66,7 @@ class DashboardController extends Controller
     // Tampilkan semua user
     public function users()
     {
-        $users = User::latest()->paginate(15);
+        $users = User::with(['jobSeeker', 'company'])->latest()->paginate(15);
         return view('admin.users', compact('users'));
     }
 
