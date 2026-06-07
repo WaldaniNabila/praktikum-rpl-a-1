@@ -21,7 +21,7 @@
 
 ## Fitur yang Sudah Berjalan
 
-### Autentikasi (Minggu 1)
+### Autentikasi 
 - ✅ Registrasi akun — Pelamar & Perusahaan (dengan pilihan role)
 - ✅ Login & Logout
 - ✅ Lupa password & reset password
@@ -29,7 +29,7 @@
 
 ---
 
-### Halaman Publik (Minggu 2 — Sedang Dikerjakan)
+### Halaman Publik 
 - ✅ Landing page / Halaman utama
 - ✅ Daftar lowongan publik (`/lowongan`)
 - ✅ Detail lowongan (`/lowongan/{id}`)
