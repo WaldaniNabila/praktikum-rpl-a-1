@@ -71,7 +71,7 @@
 | Laravel ^12.0 | Framework |
 | Laravel Breeze | Autentikasi |
 | TailwindCSS | Styling (via Vite) |
-| SQLite | Database (development) |
+| MySQL | Database (development) |
 | Docker | Tersedia |
 
 ---
@@ -95,7 +95,7 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate
 npm install
-composer run dev
+npm run dev
 ```
 
 ---
