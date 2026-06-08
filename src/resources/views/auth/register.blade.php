@@ -8,6 +8,7 @@
     <title>{{ config('app.name', 'JobHub') }} - Register</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>[x-cloak] { display: none !important; }</style>
 </head>
 <body class="min-h-screen bg-slate-100 font-sans text-slate-900">
@@ -129,28 +130,31 @@
                             placeholder="Masukkan password"
                             class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
                         >
-                        <button
+                         <button
                             type="button"
                             x-on:click="showPassword = !showPassword"
-                            class="absolute inset-y-0 right-4 flex items-center text-slate-500 hover:text-sky-600">
-                            <i
-                                :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
-                            ></i>
+                            style="position:absolute; right:16px; top:50%; transform:translateY(-50%);"
+                            class="text-slate-500 hover:text-sky-600">
+                            <i :class="showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
                         </button>
                     </div>
-                            <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
-                        </div>
+                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
+                </div>
 
-                        <div class="space-y-2">
-                            <label for="password_confirmation" class="block text-sm font-semibold text-slate-700">Konfirmasi Password</label>
-                            <div class="relative">
-                                <input id="password_confirmation" name="password_confirmation" :type="showConfirm ? 'text' : 'password'" required autocomplete="new-password" placeholder="Ulangi password" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <button type="button" x-on:click="showConfirm = !showConfirm" class="absolute inset-y-0 right-3 inline-flex items-center rounded-full bg-slate-100 px-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-200">
-                                    <span x-text="showConfirm ? 'Sembunyikan' : 'Tampilkan'"></span>
-                                </button>
-                            </div>
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
+                    <div class="space-y-2">
+                        <label for="password_confirmation" class="block text-sm font-semibold text-slate-700">Konfirmasi Password</label>
+                        <div class="relative">
+                            <input id="password_confirmation" name="password_confirmation" :type="showConfirm ? 'text' : 'password'" required autocomplete="new-password" placeholder="Ulangi password" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                            <button
+                                type="button"
+                                x-on:click="showPassword = !showPassword"
+                                style="position:absolute; right:16px; top:50%; transform:translateY(-50%);"
+                                class="text-slate-500 hover:text-sky-600">
+                                <i :class="showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+                            </button>
                         </div>
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
+                    </div>
 
                         <div class="space-y-2 lg:col-span-2">
                             <label for="address" class="block text-sm font-semibold text-slate-700">Alamat</label>
