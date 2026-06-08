@@ -41,7 +41,10 @@
                 </div>
 
                 <div class="space-y-2">
-                    <label for="password" class="block text-sm font-semibold text-slate-700">Password</label>
+                    <label for="password" class="block text-sm font-semibold text-slate-700">
+                        Password
+                    </label>
+
                     <div class="relative">
                         <input
                             id="password"
@@ -50,18 +53,17 @@
                             required
                             autocomplete="current-password"
                             placeholder="Masukkan password"
-                            class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
-                        >
+                            class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-12 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">
+
                         <button
                             type="button"
                             x-on:click="showPassword = !showPassword"
-                            class="absolute inset-y-0 right-4 flex items-center text-slate-500 hover:text-sky-600">
-                            <i
-                                :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
-                            ></i>
+                            style="position:absolute; right:12px; top:50%; transform:translateY(-50%);"
+                            class="text-slate-500 hover:text-sky-600"
+                        >
+                            <i :class="showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
                         </button>
                     </div>
-                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
                 </div>
 
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-sm text-slate-600">
