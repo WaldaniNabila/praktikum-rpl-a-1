@@ -129,8 +129,12 @@
             @forelse($latestJobs as $job)
                 <div class="bg-white border border-gray-200 rounded-xl p-4 hover:border-blue-300 transition-all group">
                     <div class="flex gap-3 items-start mb-3">
-                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 text-sm font-semibold flex items-center justify-center shrink-0">
-                            {{ strtoupper(substr($job->company->name, 0, 2)) }}
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-700 text-sm font-semibold flex items-center justify-center shrink-0 overflow-hidden border border-blue-100">
+                            @if($job->company->logo_path)
+                                <img src="{{ asset('storage/' . $job->company->logo_path) }}" alt="{{ $job->company->name }}" class="w-full h-full object-cover">
+                            @else
+                                {{ strtoupper(substr($job->company->name, 0, 2)) }}
+                            @endif
                         </div>
                         <div class="flex-1 min-w-0">
                             <div class="text-sm font-medium text-gray-900 group-hover:text-blue-700 transition-colors truncate">
