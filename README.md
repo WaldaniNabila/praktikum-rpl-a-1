@@ -2,7 +2,7 @@
 
 > Proyek praktikum Rekayasa Perangkat Lunak (RPL) — Kelompok A-1
 
-## 👥 Anggota Tim
+## Anggota Tim
 
 | Nama | NIM |
 |------|-----|
@@ -13,15 +13,15 @@
 
 ---
 
-## 🚀 Tentang Aplikasi
+## Tentang Aplikasi
 
 **JOBHUB** adalah platform rekrutmen online berbasis web yang menghubungkan pencari kerja dengan perusahaan. Dibangun menggunakan **Laravel 12** dengan sistem multi-role (Pelamar, Perusahaan, Admin).
 
 ---
 
-## ✅ Fitur yang Sudah Berjalan
+## Fitur yang Sudah Berjalan
 
-### 🔐 Autentikasi (Minggu 1)
+### Autentikasi 
 - ✅ Registrasi akun — Pelamar & Perusahaan (dengan pilihan role)
 - ✅ Login & Logout
 - ✅ Lupa password & reset password
@@ -29,14 +29,14 @@
 
 ---
 
-### 🌐 Halaman Publik (Minggu 2 — Sedang Dikerjakan)
+### Halaman Publik 
 - ✅ Landing page / Halaman utama
 - ✅ Daftar lowongan publik (`/lowongan`)
 - ✅ Detail lowongan (`/lowongan/{id}`)
 
 ---
 
-### 👤 Dashboard Pelamar
+### Dashboard Pelamar
 - ✅ Halaman dashboard pelamar
 - ✅ Halaman profil pelamar
 - ✅ Halaman daftar lamaran saya
@@ -44,7 +44,7 @@
 
 ---
 
-### 🏢 Dashboard Perusahaan
+### Dashboard Perusahaan
 - ✅ Halaman dashboard perusahaan (statistik lowongan & pelamar)
 - ✅ Halaman profil perusahaan
 - ✅ Daftar lowongan milik perusahaan
@@ -54,7 +54,7 @@
 
 ---
 
-### 🛡️ Dashboard Admin
+### Dashboard Admin
 - ✅ Halaman dashboard admin (statistik platform)
 - ✅ Halaman kelola lowongan (approve / reject)
 - ✅ Halaman kelola pengguna (aktif / nonaktif)
@@ -63,21 +63,7 @@
 
 ---
 
-## 🔧 Progress Pengembangan
-
-| Fitur | Status |
-|-------|--------|
-| Login & Register | ✅ Selesai |
-| Halaman Publik (Landing, Lowongan) | 🔄 Sedang Dikerjakan |
-| Dashboard Pelamar | 🔄 Sedang Dikerjakan |
-| Dashboard Perusahaan | 🔄 Sedang Dikerjakan |
-| Dashboard Admin | 🔄 Sedang Dikerjakan |
-| Filter & Pencarian Lowongan | 🔲 Belum |
-| Notifikasi Status Lamaran | 🔲 Belum |
-
----
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Teknologi | Keterangan |
 |-----------|-----------|
@@ -85,12 +71,12 @@
 | Laravel ^12.0 | Framework |
 | Laravel Breeze | Autentikasi |
 | TailwindCSS | Styling (via Vite) |
-| SQLite | Database (development) |
+| MySQL | Database (development) |
 | Docker | Tersedia |
 
 ---
 
-## ⚡ Cara Menjalankan
+## Cara Menjalankan
 
 ### Docker (Direkomendasikan)
 
@@ -109,12 +95,12 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate
 npm install
-composer run dev
+npm run dev
 ```
 
 ---
 
-## 📄 Dokumentasi
+## Dokumentasi
 
 Lihat folder [`docs/`](./docs/) untuk:
 - [User Stories](./docs/User-stories.md)

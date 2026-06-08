@@ -59,13 +59,16 @@
                             <div>
                                 <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Logo Perusahaan</label>
                                 <div class="mt-2 mb-4">
-                                    @if(isset($company) && $company->logo_path)
-                                        <img src="{{ asset('storage/' . $company->logo_path) }}" alt="Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
+                                @if(isset($company) && $company->logo_path)
+                                        <img id="logo-preview" src="{{ asset('storage/' . $company->logo_path) }}" alt="Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
                                     @else
-                                        <img src="{{ asset('images/default-avatar.svg') }}" alt="Default Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50">
+                                        <div id="logo-preview-placeholder" class="w-32 h-32 flex items-center justify-center border rounded-xl bg-blue-50">
+                                            <span class="text-4xl font-black text-blue-300">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+                                        </div>
+                                        <img id="logo-preview" src="" alt="Logo" class="w-32 h-32 object-contain border rounded-xl p-2 bg-slate-50 hidden">
                                     @endif
                                 </div>
-                                <input type="file" name="logo_path" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition">
+                                <input type="file" name="logo_path" accept="image/*" onchange="if(this.files[0]){ var p=document.getElementById('logo-preview-placeholder'); if(p) p.classList.add('hidden'); var img=document.getElementById('logo-preview'); img.src=window.URL.createObjectURL(this.files[0]); img.classList.remove('hidden'); }" class="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition">
                                 <p class="text-xs text-slate-400 mt-2">Format yang didukung: JPG, PNG, GIF. Maksimal ukuran 2MB.</p>
                             </div>
 

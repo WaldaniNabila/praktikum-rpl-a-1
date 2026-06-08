@@ -66,7 +66,7 @@ class DashboardController extends Controller
     // Tampilkan semua user
     public function users()
     {
-        $users = User::latest()->paginate(15);
+        $users = User::with(['jobSeeker', 'company'])->latest()->paginate(15);
         return view('admin.users', compact('users'));
     }
 
@@ -82,6 +82,18 @@ class DashboardController extends Controller
         ]);
 
         return back()->with('success', 'Status user berhasil diubah!');
+    }
+
+    // Hapus user
+    public function destroyUser(User $user)
+    {
+        if ($user->role === 'admin') {
+            return back()->with('error', 'Tidak bisa menghapus admin!');
+        }
+
+        $user->delete();
+
+        return back()->with('success', 'User berhasil dihapus!');
     }
 
     // Tampilkan semua perusahaan
