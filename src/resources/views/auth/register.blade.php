@@ -8,7 +8,8 @@
     <title>{{ config('app.name', 'JobHub') }} - Register</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>[x-cloak] { display: none !important; }</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>[x-cloak] { display: none !important; }</style>
 </head>
 <body class="min-h-screen bg-slate-100 font-sans text-slate-900">
     <div class="min-h-screen flex items-center justify-center px-6 py-10">
@@ -120,24 +121,16 @@
                         <div class="space-y-2">
                             <label for="password" class="block text-sm font-semibold text-slate-700">Password</label>
                             <div class="relative">
-                        <input
-                            id="password"
-                            name="password"
-                            :type="showPassword ? 'text' : 'password'"
-                            required
-                            autocomplete="current-password"
-                            placeholder="Masukkan password"
-                            class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100"
-                        >
-                        <button
-                            type="button"
-                            x-on:click="showPassword = !showPassword"
-                            class="absolute inset-y-0 right-4 flex items-center text-slate-500 hover:text-sky-600">
-                            <i
-                                :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
-                            ></i>
-                        </button>
-                    </div>
+                                <input id="password" name="password" :type="showPassword ? 'text' : 'password'" required autocomplete="new-password" placeholder="Masukkan password" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
+                               <button
+                                 type="button"
+                                 x-on:click="showPassword = !showPassword"
+                                 class="absolute inset-y-0 right-4 flex items-center text-slate-500 hover:text-sky-600"
+>                               <i
+                                 :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
+                             ></i>
+                                </button>
+                            </div>
                             <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-600" />
                         </div>
 
@@ -145,8 +138,13 @@
                             <label for="password_confirmation" class="block text-sm font-semibold text-slate-700">Konfirmasi Password</label>
                             <div class="relative">
                                 <input id="password_confirmation" name="password_confirmation" :type="showConfirm ? 'text' : 'password'" required autocomplete="new-password" placeholder="Ulangi password" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 pr-28 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100" />
-                                <button type="button" x-on:click="showConfirm = !showConfirm" class="absolute inset-y-0 right-3 inline-flex items-center rounded-full bg-slate-100 px-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-200">
-                                    <span x-text="showConfirm ? 'Sembunyikan' : 'Tampilkan'"></span>
+                                <button
+                                 type="button"
+                                    x-on:click="showConfirm = !showConfirm"
+                                     class="absolute inset-y-0 right-4 flex items-center text-slate-500 hover:text-sky-600"
+>                                    <i
+                                   :class="showConfirm ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
+                                 ></i>
                                 </button>
                             </div>
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
