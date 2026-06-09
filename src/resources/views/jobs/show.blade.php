@@ -65,9 +65,37 @@
                     @endif
 
                     @if(Auth::check() && Auth::user()->role === 'job_seeker')
-                        <button @click="openApplyModal = true" class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
-                            Lamar Sekarang
-                        </button>
+
+                        @php
+                            $isBookmarked = \App\Models\Bookmark::where(
+                                'job_seeker_id',
+                                auth()->user()->jobSeeker->id
+                            )->where('job_id', $jobListing->id)->exists();
+                        @endphp
+
+                        <div class="flex flex-col md:flex-row gap-2">
+
+                            {{-- Tombol Lamar --}}
+                            <button
+                                @click="openApplyModal = true"
+                                class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
+                                Lamar Sekarang
+                            </button>
+
+                            {{-- Tombol Simpan --}}
+                            <form
+                                action="{{ route('job_seeker.bookmark.toggle', $jobListing->id) }}"
+                                method="POST">
+                                @csrf
+
+                                <button
+                                    type="submit"
+                                    class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
+                                    {{ $isBookmarked ? 'Hapus dari Simpan' : 'Simpan' }}
+                                </button>
+                            </form>
+
+                        </div>
                         
                         {{-- MODAL APPLY --}}
                         <div x-show="openApplyModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">

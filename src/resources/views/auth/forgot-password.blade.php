@@ -2,7 +2,7 @@
     <div class="w-full max-w-2xl rounded-[2rem] bg-white p-10 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
         <div class="mb-10 text-center">
             <div class="text-5xl font-extrabold text-sky-600">JobHub</div>
-            <h1 class="mt-4 text-4xl font-bold text-slate-950">Lupa Password?</h1>
+            <h1 class="mt-4 text-4xl font-bold text-slate-950">Lupa Password</h1>
             <p class="mt-3 text-base text-slate-500">
                 Masukkan alamat email yang terdaftar. Kami akan mengirimkan tautan untuk mengatur ulang password Anda.
             </p>
