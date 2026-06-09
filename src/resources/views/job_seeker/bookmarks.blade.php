@@ -58,7 +58,7 @@
                                     <a href="{{ route('jobs.show', $bookmark->jobListing->id) }}" class="text-sm font-bold text-blue-600 hover:text-blue-800">
                                         Lihat Detail &rarr;
                                     </a>
-                                    <span class="text-xs text-slate-400">Disimpan {{ $bookmark->created_at->diffForHumans() }}</span>
+                                    <span class="text-xs text-slate-400">Disimpan {{ \Carbon\Carbon::parse($bookmark->created_at)->diffForHumans() }}</span>
                                 </div>
                             </div>
                         @empty
