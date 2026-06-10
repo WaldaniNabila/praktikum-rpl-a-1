@@ -27,6 +27,14 @@
     </div>
 
     <div class="border-t border-slate-800/60 pt-4 mt-8 space-y-1">
+        <a href="{{ route('home') }}" class="flex w-full items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-400 hover:bg-slate-800/60 hover:text-white transition">
+            <span class="text-base">🏠</span>
+            <span>Beranda Utama</span>
+        </a>
+        <a href="{{ route('jobs.index') }}" class="flex w-full items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-medium text-slate-400 hover:bg-slate-800/60 hover:text-white transition">
+            <span class="text-base">🔍</span>
+            <span>Cari Lowongan</span>
+        </a>
         <a href="{{ route('job_seeker.profile') }}" class="flex w-full items-center gap-4 rounded-xl px-4 py-3.5 text-sm font-medium {{ request()->routeIs('job_seeker.profile') ? 'bg-blue-600 text-white' : 'text-slate-400 hover:bg-slate-800/60 hover:text-white' }} transition">
             <span class="text-base">⚙️</span>
             <span>Profil Pelamar</span>
