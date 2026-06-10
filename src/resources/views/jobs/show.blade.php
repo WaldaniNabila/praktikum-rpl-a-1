@@ -65,9 +65,37 @@
                     @endif
 
                     @if(Auth::check() && Auth::user()->role === 'job_seeker')
-                        <button @click="openApplyModal = true" class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
-                            Lamar Sekarang
-                        </button>
+
+                        @php
+                            $isBookmarked = \App\Models\Bookmark::where(
+                                'job_seeker_id',
+                                auth()->user()->jobSeeker->id
+                            )->where('job_id', $jobListing->id)->exists();
+                        @endphp
+
+                        <div class="flex flex-col md:flex-row gap-2">
+
+                            {{-- Tombol Lamar --}}
+                            <button
+                                @click="openApplyModal = true"
+                                class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
+                                Lamar Sekarang
+                            </button>
+
+                            {{-- Tombol Simpan --}}
+                            <form
+                                action="{{ route('job_seeker.bookmark.toggle', $jobListing->id) }}"
+                                method="POST">
+                                @csrf
+
+                                <button
+                                    type="submit"
+                                    class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
+                                    {{ $isBookmarked ? 'Hapus dari Simpan' : 'Simpan' }}
+                                </button>
+                            </form>
+
+                        </div>
                         
                         {{-- MODAL APPLY --}}
                         <div x-show="openApplyModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -90,7 +118,8 @@
                                                         </div>
                                                         <div>
                                                             <label class="block text-sm font-medium text-gray-700 mb-1">Upload CV Khusus (Opsional)</label>
-                                                            <input type="file" name="cv_path" accept=".pdf,.doc,.docx" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                                                            <input type="file" name="cv_path" accept=".pdf,.doc,.docx" onchange="if(this.files[0]) { document.getElementById('apply-cv-preview').classList.remove('hidden'); document.getElementById('apply-cv-filename').innerText = this.files[0].name; }" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                                                            <p id="apply-cv-preview" class="text-sm text-blue-600 font-medium hidden mt-1">File terpilih: <span id="apply-cv-filename" class="font-bold"></span></p>
                                                             <p class="text-xs text-gray-500 mt-1">Kosongkan jika ingin menggunakan CV default di profil Anda.</p>
                                                         </div>
                                                     </div>

@@ -41,8 +41,14 @@
                                     <tr>
                                         <td class="py-4">
                                             <div class="flex items-center gap-3">
-                                                <div class="h-10 w-10 overflow-hidden rounded-full border border-slate-200 shadow-sm bg-slate-50 shrink-0 flex items-center justify-center">
-                                                    <span class="text-sm font-black text-slate-400">{{ strtoupper(substr($user->name, 0, 1)) }}</span>
+                                                <div class="h-10 w-10 overflow-hidden rounded-full border border-slate-200 shadow-sm bg-slate-100 shrink-0 flex items-center justify-center">
+                                                    @if($user->role === 'job_seeker' && $user->jobSeeker?->profile_picture)
+                                                        <img src="{{ asset('storage/' . $user->jobSeeker->profile_picture) }}" alt="Avatar" class="h-full w-full object-cover">
+                                                    @elseif($user->role === 'company' && $user->company?->logo_path)
+                                                        <img src="{{ asset('storage/' . $user->company->logo_path) }}" alt="Avatar" class="h-full w-full object-cover">
+                                                    @else
+                                                        <span class="text-sm font-black text-slate-400">{{ strtoupper(substr($user->name, 0, 1)) }}</span>
+                                                    @endif
                                                 </div>
                                                 <div>
                                                     <p class="font-bold text-slate-900">{{ $user->name }}</p>
@@ -59,7 +65,7 @@
                                                 <span class="inline-flex rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-100 uppercase tracking-wider">Job Seeker</span>
                                             @endif
                                         </td>
-                                        <td class="py-4 text-slate-500">{{ $user->created_at->format('d M Y') }}</td>
+                                        <td class="py-4 text-slate-500">{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</td>
                                         <td class="py-4">
                                             @if($user->email_verified_at)
                                                 <span class="inline-flex rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-bold text-emerald-700 border border-emerald-100">Aktif</span>
@@ -69,15 +75,22 @@
                                         </td>
                                         <td class="py-4 text-right">
                                             @if($user->role !== 'admin')
-                                                <form action="{{ route('admin.users.toggle', $user->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin mengubah status pengguna ini?')">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    @if($user->email_verified_at)
-                                                        <button type="submit" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 hover:bg-rose-100 transition">Suspend / Ban</button>
-                                                    @else
-                                                        <button type="submit" class="rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition">Aktifkan Kembali</button>
-                                                    @endif
-                                                </form>
+                                                <div class="flex items-center justify-end gap-2">
+                                                    <form action="{{ route('admin.users.toggle', $user->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin mengubah status pengguna ini?')">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        @if($user->email_verified_at)
+                                                            <button type="submit" class="rounded-lg bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-700 hover:bg-amber-100 transition">Suspend</button>
+                                                        @else
+                                                            <button type="submit" class="rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition">Aktifkan</button>
+                                                        @endif
+                                                    </form>
+                                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengguna ini permanen? Data profil dan lowongan terkait juga akan ikut terhapus.')">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 hover:bg-rose-100 transition">Hapus</button>
+                                                    </form>
+                                                </div>
                                             @else
                                                 <span class="text-xs text-slate-400 italic">No action</span>
                                             @endif

@@ -136,6 +136,7 @@
                                     Gaji Disembunyikan
                                 @endif
                             </span>
+                        </div>
                     </div>
                 @empty
                     <div class="col-span-1 lg:col-span-2 text-center py-16 bg-white border border-gray-200 rounded-xl">

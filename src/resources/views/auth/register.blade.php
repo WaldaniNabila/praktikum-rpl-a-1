@@ -8,8 +8,8 @@
     <title>{{ config('app.name', 'JobHub') }} - Register</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>[x-cloak] { display: none !important; }</style>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>[x-cloak] { display: none !important; }</style>
 </head>
 <body class="min-h-screen bg-slate-100 font-sans text-slate-900">
     <div class="min-h-screen flex items-center justify-center px-6 py-10">
@@ -149,6 +149,8 @@
                             </div>
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
                         </div>
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
+                    </div>
 
                         <div class="space-y-2 lg:col-span-2">
                             <label for="address" class="block text-sm font-semibold text-slate-700">Alamat</label>

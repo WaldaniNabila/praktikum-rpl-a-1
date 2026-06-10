@@ -61,7 +61,11 @@
                                         <td class="py-4">
                                             @if($app->cv_path)
                                                 <a href="{{ asset('storage/' . $app->cv_path) }}" target="_blank" class="text-blue-600 hover:underline text-xs font-bold flex items-center gap-1">
-                                                    📄 Lihat CV
+                                                    📄 Lihat CV (Khusus Lamaran)
+                                                </a>
+                                            @elseif($app->jobSeeker->cv_path)
+                                                <a href="{{ asset('storage/' . $app->jobSeeker->cv_path) }}" target="_blank" class="text-blue-600 hover:underline text-xs font-bold flex items-center gap-1">
+                                                    📄 Lihat CV (Profil Utama)
                                                 </a>
                                             @else
                                                 <span class="text-slate-400 text-xs">Tidak ada CV</span>
