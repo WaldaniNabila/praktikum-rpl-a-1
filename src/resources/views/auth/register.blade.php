@@ -149,14 +149,12 @@
                             </div>
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
                         </div>
-                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-600" />
                     </div>
 
-                        <div class="space-y-2 lg:col-span-2">
-                            <label for="address" class="block text-sm font-semibold text-slate-700">Alamat</label>
-                            <textarea id="address" name="address" rows="4" placeholder="Masukkan alamat lengkap" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">{{ old('address') }}</textarea>
-                            <x-input-error :messages="$errors->get('address')" class="mt-2 text-sm text-red-600" />
-                        </div>
+                    <div class="space-y-2 lg:col-span-2">
+                        <label for="address" class="block text-sm font-semibold text-slate-700">Alamat</label>
+                        <textarea id="address" name="address" rows="4" placeholder="Masukkan alamat lengkap" class="w-full rounded-2xl border border-slate-300 bg-white px-4 py-4 text-sm text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-4 focus:ring-sky-100">{{ old('address') }}</textarea>
+                        <x-input-error :messages="$errors->get('address')" class="mt-2 text-sm text-red-600" />
                     </div>
                 </div>
 
