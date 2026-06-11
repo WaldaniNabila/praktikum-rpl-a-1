@@ -87,6 +87,14 @@ Jika Anda lupa kata sandi akun Anda, ikuti langkah ini:
 
 > **[Masukkan Screenshot: Halaman Detail Lowongan]**
 
+### Melihat Profil Perusahaan
+1. Pada halaman Detail Lowongan, terdapat kotak informasi (card) "Tentang Perusahaan" (contoh: Tentang Sumber Rejeki).
+2. Klik tautan **Lihat profil perusahaan &rarr;** untuk mengetahui lebih lanjut tentang latar belakang perusahaan tersebut.
+3. Anda akan diarahkan ke halaman Profil Perusahaan yang menampilkan detail lengkap mengenai perusahaan, termasuk lowongan lain yang mungkin sedang mereka buka.
+
+> **[Masukkan Screenshot: Kotak 'Tentang Perusahaan' dengan tautan Lihat profil perusahaan]**
+> **[Masukkan Screenshot: Halaman Detail Profil Perusahaan]**
+
 ### Melamar Pekerjaan (Apply + Upload CV)
 1. Setelah memastikan Anda memenuhi kualifikasi pada halaman detail lowongan, klik tombol **Lamar Pekerjaan** (Apply).
 2. Sebuah jendela (*pop-up*) atau halaman form lamaran akan muncul.

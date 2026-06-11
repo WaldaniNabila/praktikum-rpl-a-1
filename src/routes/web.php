@@ -8,6 +8,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\JobSeeker\DashboardController as JobSeekerDashboard;
 use App\Http\Controllers\Company\DashboardController as CompanyDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 // ─── PUBLIC ──────────────────────────────────────────────────────────────────
@@ -16,6 +17,9 @@ Route::get('/', [LandingController::class, 'index'])->name('home');
 // Lowongan publik
 Route::get('/lowongan', [JobListingController::class, 'index'])->name('jobs.index');
 Route::get('/lowongan/{jobListing}', [JobListingController::class, 'show'])->name('jobs.show');
+
+// Profil Perusahaan (public)
+Route::get('/perusahaan/{company}', [CompanyController::class, 'show'])->name('companies.show');
 
 // ─── JOB SEEKER ──────────────────────────────────────────────────────────────
 Route::middleware(['auth', 'verified', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
@@ -46,6 +50,7 @@ Route::middleware(['auth', 'verified', 'role:company'])->prefix('company')->name
     Route::put('/lowongan/{jobListing}',      [CompanyDashboard::class, 'updateJob'])->name('jobs.update');
     Route::delete('/lowongan/{jobListing}',   [CompanyDashboard::class, 'destroyJob'])->name('jobs.destroy');
     Route::get('/lowongan/{jobListing}/pelamar', [CompanyDashboard::class, 'applicants'])->name('jobs.applicants');
+    Route::get('/pelamar/{jobSeeker}',        [CompanyDashboard::class, 'applicantProfile'])->name('applicants.show');
     Route::put('/lamaran/{application}/status',  [CompanyDashboard::class, 'updateApplicationStatus'])->name('application.status');
 });
 

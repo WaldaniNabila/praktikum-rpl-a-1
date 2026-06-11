@@ -50,7 +50,9 @@
                                     @forelse($applications as $app)
                                     <tr>
                                         <td class="py-4">
-                                            <p class="font-bold text-slate-900">{{ $app->jobSeeker->user->name ?? 'User Terhapus' }}</p>
+                                            <a href="{{ route('company.applicants.show', $app->jobSeeker->id) }}" class="font-bold text-blue-600 hover:text-blue-800 hover:underline transition">
+                                                {{ $app->jobSeeker->user->name ?? 'User Terhapus' }}
+                                            </a>
                                             <p class="text-xs text-slate-500">{{ $app->jobSeeker->user->email ?? '-' }}</p>
                                         </td>
                                         <td class="py-4">
