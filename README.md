@@ -33,6 +33,7 @@
 - ✅ Landing page / Halaman utama
 - ✅ Daftar lowongan publik (`/lowongan`)
 - ✅ Detail lowongan (`/lowongan/{id}`)
+- ✅ Detail profil perusahaan
 
 ---
 
@@ -51,6 +52,7 @@
 - ✅ Form buat lowongan baru
 - ✅ Form edit lowongan
 - ✅ Halaman daftar pelamar per lowongan
+- ✅ Halaman detail profil pelamar
 
 ---
 
@@ -103,9 +105,11 @@ npm run dev
 ## Dokumentasi
 
 Lihat folder [`docs/`](./docs/) untuk:
+- [Problem Statement](./docs/Problem-statemen.md)
 - [User Stories](./docs/User-stories.md)
 - [Product Backlog](./docs/Backlog.md)
 - [SRS](./docs/srs.md)
 - [ERD](./docs/erd.png)
 - [Data Dictionary](./docs/data_dictionary.md)
 - [Team Contract](./docs/team-contract.md)
+- [User Manual](./docs/user-manual.md)
