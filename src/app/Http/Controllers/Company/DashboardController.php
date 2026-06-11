@@ -171,6 +171,24 @@ class DashboardController extends Controller
         return view('company.jobs.applicants', compact('jobListing', 'applications'));
     }
 
+    // Lihat profil pelamar
+    public function applicantProfile(\App\Models\JobSeeker $jobSeeker)
+    {
+        // Pastikan pelamar pernah melamar ke salah satu lowongan perusahaan ini
+        $hasApplied = \App\Models\Application::where('job_seeker_id', $jobSeeker->id)
+            ->whereHas('jobListing', function($q) {
+                $q->where('company_id', Auth::user()->company->id);
+            })->exists();
+
+        if (!$hasApplied) {
+            abort(403, 'Anda tidak memiliki akses untuk melihat profil kandidat ini karena kandidat tidak melamar di perusahaan Anda.');
+        }
+
+        $jobSeeker->load('user');
+
+        return view('company.job_seekers.show', compact('jobSeeker'));
+    }
+
     // Update status lamaran
     public function updateApplicationStatus(Request $request, Application $application)
     {

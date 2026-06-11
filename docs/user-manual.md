@@ -87,6 +87,14 @@ Jika Anda lupa kata sandi akun Anda, ikuti langkah ini:
 
 > **[Masukkan Screenshot: Halaman Detail Lowongan]**
 
+### Melihat Profil Perusahaan
+1. Pada halaman Detail Lowongan, terdapat kotak informasi (card) "Tentang Perusahaan" (contoh: Tentang Sumber Rejeki).
+2. Klik tautan **Lihat profil perusahaan &rarr;** untuk mengetahui lebih lanjut tentang latar belakang perusahaan tersebut.
+3. Anda akan diarahkan ke halaman Profil Perusahaan yang menampilkan detail lengkap mengenai perusahaan, termasuk lowongan lain yang mungkin sedang mereka buka.
+
+> **[Masukkan Screenshot: Kotak 'Tentang Perusahaan' dengan tautan Lihat profil perusahaan]**
+> **[Masukkan Screenshot: Halaman Detail Profil Perusahaan]**
+
 ### Melamar Pekerjaan (Apply + Upload CV)
 1. Setelah memastikan Anda memenuhi kualifikasi pada halaman detail lowongan, klik tombol **Lamar Pekerjaan** (Apply).
 2. Sebuah jendela (*pop-up*) atau halaman form lamaran akan muncul.
@@ -155,10 +163,16 @@ Jika Anda lupa kata sandi akun Anda, ikuti langkah ini:
 
 ### Melihat Daftar Pelamar
 1. Masih di menu **Kelola Lowongan**, klik tombol/opsi **Lihat Pelamar** (View Applicants) pada lowongan spesifik yang ingin Anda periksa.
-2. Anda akan dialihkan ke halaman berisi daftar para kandidat yang telah apply.
-3. Klik nama kandidat untuk membuka profil lengkapnya, membaca informasi pendidikan/pengalaman, serta **Mengunduh file CV** mereka.
+2. Anda akan dialihkan ke halaman tabel yang berisi daftar para kandidat beserta ringkasan lamaran mereka (Cover Letter, Status, dll).
 
 > **[Masukkan Screenshot: Daftar pelamar yang masuk pada satu lowongan]**
+
+### Melihat Detail Profil Pelamar
+1. Pada tabel Daftar Pelamar, klik **Nama Kandidat** yang berwarna biru.
+2. Anda akan diarahkan ke halaman khusus **Detail Profil Kandidat**.
+3. Di halaman ini, Anda dapat meninjau informasi lengkap tentang kandidat, termasuk foto profil, kontak (Email & No. HP), deskripsi/tentang pelamar, serta tautan untuk mengunduh CV Utama mereka.
+
+> **[Masukkan Screenshot: Halaman Detail Profil Pelamar yang menampilkan info dan CV]**
 
 ### Mengubah Status Lamaran
 1. Pada halaman detail kandidat atau daftar pelamar, cari kolom aksi pengubahan status (biasanya berupa *dropdown menu*).

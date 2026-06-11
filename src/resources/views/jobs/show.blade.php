@@ -209,7 +209,7 @@
                 <p class="text-sm text-blue-800 leading-relaxed mb-4">
                     {{ Str::limit($jobListing->company->description ?? 'Perusahaan ini belum menambahkan deskripsi.', 150) }}
                 </p>
-                <a href="#" class="text-sm font-semibold text-blue-700 hover:underline">Lihat profil perusahaan &rarr;</a>
+                <a href="{{ route('companies.show', $jobListing->company->id) }}" class="text-sm font-semibold text-blue-700 hover:underline">Lihat profil perusahaan &rarr;</a>
             </div>
         </aside>
 
