@@ -83,6 +83,7 @@
 ### Docker (Direkomendasikan)
 
 ```bash
+cd src 
 docker compose up --build
 ```
 
