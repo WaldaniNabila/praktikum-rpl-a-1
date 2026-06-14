@@ -13,8 +13,7 @@
                     </div>
 
                     <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8 items-start relative overflow-hidden">
-                        {{-- Background Accent --}}
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -z-10 opacity-60 translate-x-1/2 -translate-y-1/2"></div>
+                                                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -z-10 opacity-60 translate-x-1/2 -translate-y-1/2"></div>
                         
                         <div class="w-32 h-32 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center shrink-0 border-4 border-white shadow-md overflow-hidden text-5xl font-extrabold">
                             @if($jobSeeker->profile_picture)

@@ -8,8 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
 
-    {{-- NAVBAR --}}
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center h-14 gap-6">
             <a href="{{ route('home') }}" class="text-lg font-semibold text-blue-700 tracking-tight">JobHub</a>
             <a href="{{ route('jobs.index') }}" class="text-sm font-medium text-blue-700 border-b-2 border-blue-700 pb-0.5">Lowongan</a>
@@ -27,8 +26,7 @@
         </div>
     </nav>
 
-    {{-- HEADER SEARCH --}}
-    <section class="bg-blue-800 py-12 px-6">
+        <section class="bg-blue-800 py-12 px-6">
         <div class="max-w-7xl mx-auto">
             <h1 class="text-3xl font-semibold text-white mb-6">Temukan Pekerjaan Idealmu</h1>
             <form action="{{ route('jobs.index') }}" method="GET" class="flex flex-col sm:flex-row gap-3">
@@ -45,11 +43,9 @@
         </div>
     </section>
 
-    {{-- MAIN CONTENT --}}
-    <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8 flex flex-col md:flex-row gap-8">
+        <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8 flex flex-col md:flex-row gap-8">
         
-        {{-- SIDEBAR FILTER --}}
-        <aside class="w-full md:w-64 shrink-0">
+                <aside class="w-full md:w-64 shrink-0">
             <div class="bg-white border border-gray-200 rounded-xl p-5 sticky top-20">
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="font-semibold text-gray-900">Filter Pencarian</h2>
@@ -60,8 +56,7 @@
                     <input type="hidden" name="q" value="{{ request('q') }}">
                     <input type="hidden" name="location" value="{{ request('location') }}">
                     
-                    {{-- Kategori --}}
-                    <div>
+                                        <div>
                         <h3 class="text-sm font-medium text-gray-700 mb-2">Kategori</h3>
                         <select name="category" class="w-full rounded-lg border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500" onchange="this.form.submit()">
                             <option value="">Semua Kategori</option>
@@ -73,8 +68,7 @@
                         </select>
                     </div>
 
-                    {{-- Tipe Pekerjaan --}}
-                    <div>
+                                        <div>
                         <h3 class="text-sm font-medium text-gray-700 mb-2">Tipe Pekerjaan</h3>
                         <select name="employment_type" class="w-full rounded-lg border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500" onchange="this.form.submit()">
                             <option value="">Semua Tipe</option>
@@ -85,8 +79,7 @@
                         </select>
                     </div>
 
-                    {{-- Sistem Kerja --}}
-                    <div>
+                                        <div>
                         <h3 class="text-sm font-medium text-gray-700 mb-2">Sistem Kerja</h3>
                         <select name="work_type" class="w-full rounded-lg border-gray-300 text-sm focus:border-blue-500 focus:ring-blue-500" onchange="this.form.submit()">
                             <option value="">Semua Sistem</option>
@@ -99,8 +92,7 @@
             </div>
         </aside>
 
-        {{-- JOB LIST --}}
-        <div class="flex-1">
+                <div class="flex-1">
             <h2 class="text-gray-700 text-sm font-medium mb-4">Menampilkan {{ $jobs->total() }} lowongan pekerjaan</h2>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -153,8 +145,7 @@
         </div>
     </main>
 
-    {{-- FOOTER --}}
-    <footer class="bg-white border-t border-gray-200 mt-auto py-8">
+        <footer class="bg-white border-t border-gray-200 mt-auto py-8">
         <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-xl font-bold text-blue-700 tracking-tight">JobHub</div>
             <div class="text-sm text-gray-500">© {{ date('Y') }} JobHub. Hak Cipta Dilindungi.</div>

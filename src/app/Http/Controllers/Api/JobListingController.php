@@ -15,7 +15,6 @@ class JobListingController extends Controller
             ->where('is_open', true)
             ->latest();
 
-        // Optional filtering for mobile app
         if ($request->has('search')) {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
@@ -36,7 +35,6 @@ class JobListingController extends Controller
             $query->where('work_type', $request->work_type);
         }
 
-        // Pagination
         $jobs = $query->paginate(15);
 
         return response()->json($jobs);

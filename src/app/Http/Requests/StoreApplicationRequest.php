@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreApplicationRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Menentukan apakah pengguna diizinkan untuk membuat permintaan ini.
      */
     public function authorize(): bool
     {
@@ -17,7 +17,7 @@ class StoreApplicationRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Mendapatkan aturan validasi yang berlaku untuk permintaan ini.
      *
      * @return array<string, ValidationRule|array<mixed>|string>
      */

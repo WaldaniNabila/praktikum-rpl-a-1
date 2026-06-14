@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BookmarkController extends Controller
 {
-    // Simpan / hapus bookmark (toggle)
     public function toggle(JobListing $jobListing)
     {
         $jobSeekerId = Auth::user()->jobSeeker->id;
@@ -32,7 +31,6 @@ class BookmarkController extends Controller
         return back()->with('success', 'Lowongan berhasil disimpan!');
     }
 
-    // Tampilkan semua bookmark
     public function index()
     {
         $bookmarks = Bookmark::with(['jobListing.company', 'jobListing.category'])

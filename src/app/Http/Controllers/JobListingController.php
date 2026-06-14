@@ -8,14 +8,12 @@ use Illuminate\Http\Request;
 
 class JobListingController extends Controller
 {
-    // Tampilkan semua lowongan (public)
     public function index(Request $request)
     {
         $query = JobListing::with(['company', 'category'])
             ->where('status', 'approved')
             ->where('is_open', true);
 
-        // Filter berdasarkan keyword
         if ($request->q) {
             $query->where(function($q) use ($request) {
                 $q->where('title', 'like', '%' . $request->q . '%')
@@ -26,24 +24,20 @@ class JobListingController extends Controller
             });
         }
 
-        // Filter berdasarkan kategori
         if ($request->category) {
             $query->whereHas('category', function($q) use ($request) {
                 $q->where('slug', $request->category);
             });
         }
 
-        // Filter berdasarkan lokasi
         if ($request->location) {
             $query->where('location', 'like', '%' . $request->location . '%');
         }
 
-        // Filter berdasarkan tipe kerja
         if ($request->employment_type) {
             $query->where('employment_type', $request->employment_type);
         }
 
-        // Filter berdasarkan work type
         if ($request->work_type) {
             $query->where('work_type', $request->work_type);
         }
@@ -54,7 +48,6 @@ class JobListingController extends Controller
         return view('jobs.index', compact('jobs', 'categories'));
     }
 
-    // Tampilkan detail lowongan
     public function show(JobListing $jobListing)
     {
         $jobListing->load(['company', 'category']);

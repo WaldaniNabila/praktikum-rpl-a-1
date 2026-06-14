@@ -34,19 +34,16 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    // Relasi ke JobSeeker (1:1)
     public function jobSeeker()
     {
         return $this->hasOne(JobSeeker::class);
     }
 
-    // Relasi ke Company (1:1)
     public function company()
     {
         return $this->hasOne(Company::class);
     }
 
-    // Helper cek role
     public function isAdmin()
     {
         return $this->role === 'admin';
@@ -64,13 +61,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        // Generate random 6-digit OTP
         $otp = rand(100000, 999999);
 
-        // Store OTP in Cache for 15 minutes, keyed by user ID
         \Illuminate\Support\Facades\Cache::put('otp_verification_' . $this->id, $otp, now()->addMinutes(15));
 
-        // Send the custom OTP email
         \Illuminate\Support\Facades\Mail::to($this->email)->send(new \App\Mail\OtpVerificationMail($otp));
     }
 }

@@ -8,8 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
 
-    {{-- NAVBAR --}}
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center h-14 gap-6">
             <a href="{{ route('home') }}" class="text-lg font-semibold text-blue-700 tracking-tight">JobHub</a>
             <a href="{{ route('jobs.index') }}" class="text-sm font-medium text-blue-700">Lowongan</a>
@@ -27,8 +26,7 @@
         </div>
     </nav>
 
-    {{-- HEADER JOB --}}
-    <section class="bg-white border-b border-gray-200 py-10 px-6">
+        <section class="bg-white border-b border-gray-200 py-10 px-6">
         <div class="max-w-5xl mx-auto">
             <a href="{{ route('jobs.index') }}" class="text-sm text-blue-600 hover:underline mb-6 inline-block">&larr; Kembali ke daftar lowongan</a>
             
@@ -75,15 +73,13 @@
 
                         <div class="flex flex-col md:flex-row gap-2">
 
-                            {{-- Tombol Lamar --}}
-                            <button
+                                                        <button
                                 @click="openApplyModal = true"
                                 class="w-full md:w-48 bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-md shadow-blue-700/20">
                                 Lamar Sekarang
                             </button>
 
-                            {{-- Tombol Simpan --}}
-                            <form
+                                                        <form
                                 action="{{ route('job_seeker.bookmark.toggle', $jobListing->id) }}"
                                 method="POST">
                                 @csrf
@@ -97,8 +93,7 @@
 
                         </div>
                         
-                        {{-- MODAL APPLY --}}
-                        <div x-show="openApplyModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                                <div x-show="openApplyModal" style="display: none;" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                 <div x-show="openApplyModal" @click="openApplyModal = false" x-transition.opacity class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
                                 <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -153,11 +148,9 @@
         </div>
     </section>
 
-    {{-- MAIN CONTENT --}}
-    <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-10 flex flex-col md:flex-row gap-10">
+        <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-10 flex flex-col md:flex-row gap-10">
         
-        {{-- DESKRIPSI KIRI --}}
-        <div class="flex-1 space-y-8">
+                <div class="flex-1 space-y-8">
             <section>
                 <h2 class="text-xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-4">Deskripsi Pekerjaan</h2>
                 <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed whitespace-pre-line">
@@ -173,8 +166,7 @@
             </section>
         </div>
 
-        {{-- INFO KANAN --}}
-        <aside class="w-full md:w-80 shrink-0 space-y-6">
+                <aside class="w-full md:w-80 shrink-0 space-y-6">
             <div class="bg-white border border-gray-200 rounded-2xl p-6">
                 <h3 class="font-bold text-gray-900 mb-4">Ringkasan Pekerjaan</h3>
                 
@@ -215,8 +207,7 @@
 
     </main>
 
-    {{-- RELATED JOBS --}}
-    @if($relatedJobs->count() > 0)
+        @if($relatedJobs->count() > 0)
     <section class="bg-white border-t border-gray-200 py-12 px-6">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Lowongan Terkait</h2>
@@ -241,8 +232,7 @@
     </section>
     @endif
 
-    {{-- FOOTER --}}
-    <footer class="bg-gray-900 text-white mt-auto py-8">
+        <footer class="bg-gray-900 text-white mt-auto py-8">
         <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-xl font-bold tracking-tight">JobHub</div>
             <div class="text-sm text-gray-400">© {{ date('Y') }} JobHub. Hak Cipta Dilindungi.</div>

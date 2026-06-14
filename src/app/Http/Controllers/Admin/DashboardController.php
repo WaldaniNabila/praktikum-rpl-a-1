@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    // Tampilkan dashboard admin
     public function index()
     {
         $totalUsers      = User::count();
@@ -39,7 +38,6 @@ class DashboardController extends Controller
         ));
     }
 
-    // Tampilkan semua lowongan
     public function jobs()
     {
         $jobs = JobListing::with(['company', 'category'])
@@ -49,28 +47,24 @@ class DashboardController extends Controller
         return view('admin.jobs', compact('jobs'));
     }
 
-    // Approve lowongan
     public function approveJob(JobListing $jobListing)
     {
         $jobListing->update(['status' => 'approved']);
         return back()->with('success', 'Lowongan berhasil diapprove!');
     }
 
-    // Reject lowongan
     public function rejectJob(JobListing $jobListing)
     {
         $jobListing->update(['status' => 'rejected']);
         return back()->with('success', 'Lowongan berhasil direject!');
     }
 
-    // Tampilkan semua user
     public function users()
     {
         $users = User::with(['jobSeeker', 'company'])->latest()->paginate(15);
         return view('admin.users', compact('users'));
     }
 
-    // Toggle aktif/nonaktif user
     public function toggleUser(User $user)
     {
         if ($user->role === 'admin') {
@@ -84,7 +78,6 @@ class DashboardController extends Controller
         return back()->with('success', 'Status user berhasil diubah!');
     }
 
-    // Hapus user
     public function destroyUser(User $user)
     {
         if ($user->role === 'admin') {
@@ -96,35 +89,30 @@ class DashboardController extends Controller
         return back()->with('success', 'User berhasil dihapus!');
     }
 
-    // Tampilkan semua perusahaan
     public function companies()
     {
         $companies = Company::with('user')->latest()->paginate(15);
         return view('admin.companies', compact('companies'));
     }
 
-    // Verifikasi perusahaan
     public function verifyCompany(Company $company)
     {
         $company->update(['status' => 'verified']);
         return back()->with('success', 'Perusahaan berhasil diverifikasi!');
     }
 
-    // Reject perusahaan
     public function rejectCompany(Company $company)
     {
         $company->update(['status' => 'rejected']);
         return back()->with('success', 'Perusahaan berhasil direject!');
     }
 
-    // Kelola kategori
     public function categories()
     {
         $categories = Category::all();
         return view('admin.categories', compact('categories'));
     }
 
-    // Tambah kategori
     public function storeCategory(Request $request)
     {
         $request->validate([
@@ -137,7 +125,6 @@ class DashboardController extends Controller
         return back()->with('success', 'Kategori berhasil ditambahkan!');
     }
 
-    // Hapus kategori
     public function destroyCategory(Category $category)
     {
         $category->delete();

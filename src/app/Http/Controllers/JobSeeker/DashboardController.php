@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    // Tampilkan dashboard pelamar
     public function index()
     {
         $jobSeeker = Auth::user()->jobSeeker;
@@ -36,7 +35,6 @@ class DashboardController extends Controller
         ));
     }
 
-    // Tampilkan semua lamaran
     public function applications()
     {
         $jobSeeker = Auth::user()->jobSeeker;
@@ -49,7 +47,6 @@ class DashboardController extends Controller
         return view('job_seeker.applications', compact('applications'));
     }
 
-    // Tampilkan & update profil
     public function profile()
     {
         $jobSeeker = Auth::user()->jobSeeker;
@@ -61,7 +58,6 @@ class DashboardController extends Controller
         $user = Auth::user();
         $jobSeeker = $user->jobSeeker;
 
-        // Update User table (name)
         $user->update([
             'name' => $request->name,
         ]);

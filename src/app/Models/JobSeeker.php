@@ -17,19 +17,16 @@ class JobSeeker extends Model
         'description',
     ];
 
-    // Relasi ke User (1:1)
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Relasi ke Applications (1:N)
     public function applications()
     {
         return $this->hasMany(Application::class);
     }
 
-    // Relasi ke Bookmarks (1:N)
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);

@@ -7,8 +7,7 @@
             <div class="flex-1 bg-slate-50 overflow-y-auto">
                 <main class="p-8 lg:p-12 space-y-10 max-w-[1600px] mx-auto">
                     
-                    {{-- HEADER --}}
-                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                             <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Status Lamaran</h1>
                             <p class="text-slate-500 mt-2">Daftar semua lowongan pekerjaan yang telah kamu lamar.</p>
@@ -26,8 +25,7 @@
                         </div>
                     @endif
 
-                    {{-- APPLICATIONS TABLE --}}
-                    <section class="rounded-2xl bg-white shadow-sm border border-slate-100/80 overflow-hidden">
+                                        <section class="rounded-2xl bg-white shadow-sm border border-slate-100/80 overflow-hidden">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-sm">
                                 <thead class="bg-slate-50 border-b border-slate-100">

@@ -8,8 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
 
-    {{-- NAVBAR --}}
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center h-14 gap-6">
             <a href="{{ route('home') }}" class="text-lg font-semibold text-blue-700 tracking-tight">JobHub</a>
             <a href="{{ route('jobs.index') }}" class="text-sm font-medium text-blue-700 border-b-2 border-blue-700 pb-0.5">Lowongan</a>
@@ -27,8 +26,7 @@
         </div>
     </nav>
 
-    {{-- HERO --}}
-    <section class="bg-blue-50 border-b border-blue-100 py-16 px-4 text-center">
+        <section class="bg-blue-50 border-b border-blue-100 py-16 px-4 text-center">
         <div class="max-w-3xl mx-auto">
             <h1 class="text-4xl font-semibold text-blue-900 leading-snug mb-3">
                 Temukan <span class="text-blue-700">pekerjaan impianmu</span><br>
@@ -74,8 +72,7 @@
         </div>
     </section>
 
-    {{-- STATISTIK --}}
-    <section class="bg-white border-b border-gray-200">
+        <section class="bg-white border-b border-gray-200">
         <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 divide-x divide-gray-100">
             <div class="py-5 text-center">
                 <div class="text-2xl font-semibold text-blue-700">{{ $totalJobs }}+</div>
@@ -96,8 +93,7 @@
         </div>
     </section>
 
-    {{-- KATEGORI --}}
-    <section class="max-w-7xl mx-auto px-6 py-10">
+        <section class="max-w-7xl mx-auto px-6 py-10">
         <div class="flex items-baseline justify-between mb-5">
             <h2 class="text-lg font-semibold text-gray-900">Jelajahi berdasarkan kategori</h2>
             <a href="{{ route('jobs.index') }}" class="text-sm text-blue-700 hover:underline">Lihat semua →</a>
@@ -119,8 +115,7 @@
         </div>
     </section>
 
-    {{-- LOWONGAN TERBARU --}}
-    <section class="max-w-7xl mx-auto px-6 pb-10">
+        <section class="max-w-7xl mx-auto px-6 pb-10">
         <div class="flex items-baseline justify-between mb-5">
             <h2 class="text-lg font-semibold text-gray-900">Lowongan terbaru</h2>
             <a href="{{ route('jobs.index') }}" class="text-sm text-blue-700 hover:underline">Lihat semua →</a>
@@ -173,8 +168,7 @@
         </div>
     </section>
 
-    {{-- CTA PERUSAHAAN --}}
-    <section class="max-w-7xl mx-auto px-6 pb-10">
+        <section class="max-w-7xl mx-auto px-6 pb-10">
         <div class="bg-blue-800 rounded-2xl p-8 flex flex-col sm:flex-row items-center gap-6">
             <div class="flex-1 text-center sm:text-left">
                 <h2 class="text-xl font-semibold text-blue-50 mb-2">Rekrut talenta terbaik bersama JobHub</h2>
@@ -189,8 +183,7 @@
         </div>
     </section>
 
-    {{-- CARA KERJA --}}
-    <section class="bg-gray-50 border-t border-gray-100 py-10 px-4">
+        <section class="bg-gray-50 border-t border-gray-100 py-10 px-4">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-lg font-semibold text-gray-900 mb-6 text-center">Cara kerja JobHub</h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -211,8 +204,7 @@
         </div>
     </section>
 
-    {{-- FOOTER --}}
-    <footer class="bg-white border-t border-gray-100 py-6 px-4">
+        <footer class="bg-white border-t border-gray-100 py-6 px-4">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
             <span class="text-base font-semibold text-blue-700">JobHub</span>
             <div class="flex gap-5 flex-wrap justify-center">
