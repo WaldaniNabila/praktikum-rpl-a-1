@@ -19,6 +19,17 @@
 
 ---
 
+## Status MVP (Minimum Viable Product)
+
+
+Aplikasi ini telah memenuhi standar MVP karena seluruh alur inti sudah berfungsi dengan baik tanpa ada *blocker*:
+1. **Sistem Role:** Autentikasi dan otorisasi aman untuk Admin, Perusahaan, dan Pencari Kerja.
+2. **Perusahaan:** Bisa memposting lowongan, melihat kandidat, dan mengubah status lamaran (Diterima/Ditolak).
+3. **Pencari Kerja:** Bisa mencari lowongan yang aktif, mengirimkan lamaran beserta CV, dan membatalkan lamaran.
+4. **Admin:** Menjadi juri (Approve/Reject) untuk setiap lowongan baru yang diposting.
+
+---
+
 ## Fitur yang Sudah Berjalan
 
 ### Autentikasi 
@@ -38,10 +49,12 @@
 ---
 
 ### Dashboard Pelamar
+- ✅ Melengkapi profil dan CV
+- ✅ Mengirim lamaran pekerjaan (Apply) pada lowongan yang aktif
+- ✅ Membatalkan lamaran pekerjaan
 - ✅ Halaman dashboard pelamar
-- ✅ Halaman profil pelamar
-- ✅ Halaman daftar lamaran saya
-- ✅ Halaman lowongan tersimpan (bookmark)
+- ✅ Halaman daftar lamaran saya & status penerimaan
+- ✅ Menyimpan lowongan (Bookmark)
 
 ---
 
@@ -83,6 +96,7 @@
 ### Docker (Direkomendasikan)
 
 ```bash
+cd src 
 docker compose up --build
 ```
 
