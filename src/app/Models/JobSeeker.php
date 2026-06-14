@@ -34,4 +34,15 @@ class JobSeeker extends Model
     {
         return $this->hasMany(Bookmark::class);
     }
+
+    /**
+     * Cek apakah pelamar sudah pernah melamar ke lowongan tertentu.
+     *
+     * @param  \App\Models\JobListing  $jobListing
+     * @return bool
+     */
+    public function hasAppliedTo(JobListing $jobListing): bool
+    {
+        return $this->applications()->where('job_id', $jobListing->id)->exists();
+    }
 }

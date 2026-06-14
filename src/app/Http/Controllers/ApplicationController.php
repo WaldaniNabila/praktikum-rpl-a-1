@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\JobListing;
+use App\Http\Requests\StoreApplicationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
     // Kirim lamaran
-    public function store(Request $request, JobListing $jobListing)
+    public function store(StoreApplicationRequest $request, JobListing $jobListing)
     {
         $jobSeeker = Auth::user()->jobSeeker;
         
@@ -24,19 +25,10 @@ class ApplicationController extends Controller
             return back()->with('error', 'Lowongan ini sudah ditutup atau tidak tersedia.');
         }
 
-        // Cek apakah sudah pernah melamar
-        $alreadyApplied = Application::where('job_seeker_id', $jobSeeker->id)
-            ->where('job_id', $jobListing->id)
-            ->exists();
-
-        if ($alreadyApplied) {
+        // 3. Cek apakah sudah pernah melamar menggunakan method Model
+        if ($jobSeeker->hasAppliedTo($jobListing)) {
             return back()->with('error', 'Kamu sudah pernah melamar lowongan ini!');
         }
-
-        $request->validate([
-            'cover_letter' => ['nullable', 'string', 'max:2000'],
-            'cv_path'      => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:2048'],
-        ]);
 
         // 3. Fallback ke CV default profil jika tidak upload CV khusus
         $cvPath = null;
