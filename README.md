@@ -21,9 +21,8 @@
 
 ## Status MVP (Minimum Viable Product)
 
-✅ **LULUS / SELESAI (100%)**
 
-Aplikasi ini telah memenuhi standar MVP karena seluruh alur inti (*Core Features*) sudah berfungsi dengan baik tanpa ada *blocker*:
+Aplikasi ini telah memenuhi standar MVP karena seluruh alur inti sudah berfungsi dengan baik tanpa ada *blocker*:
 1. **Sistem Role:** Autentikasi dan otorisasi aman untuk Admin, Perusahaan, dan Pencari Kerja.
 2. **Perusahaan:** Bisa memposting lowongan, melihat kandidat, dan mengubah status lamaran (Diterima/Ditolak).
 3. **Pencari Kerja:** Bisa mencari lowongan yang aktif, mengirimkan lamaran beserta CV, dan membatalkan lamaran.
