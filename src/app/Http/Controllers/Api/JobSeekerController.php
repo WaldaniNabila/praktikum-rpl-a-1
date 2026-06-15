@@ -8,6 +8,35 @@ use App\Models\JobSeeker;
 
 class JobSeekerController extends Controller
 {
+    public function dashboard(Request $request)
+    {
+        $user = $request->user();
+        $jobSeeker = $user->jobSeeker;
+
+        if (!$jobSeeker) {
+            return response()->json(['message' => 'Job Seeker profile not found'], 404);
+        }
+
+        $totalApplications = \App\Models\Application::where('job_seeker_id', $jobSeeker->id)->count();
+        $waitingApplications = \App\Models\Application::where('job_seeker_id', $jobSeeker->id)
+            ->where('status', 'waiting')->count();
+        $acceptedApplications = \App\Models\Application::where('job_seeker_id', $jobSeeker->id)
+            ->where('status', 'accepted')->count();
+
+        $recentApplications = \App\Models\Application::with(['jobListing.company', 'jobListing.category'])
+            ->where('job_seeker_id', $jobSeeker->id)
+            ->latest()
+            ->take(5)
+            ->get();
+
+        return response()->json([
+            'total_applications' => $totalApplications,
+            'waiting_applications' => $waitingApplications,
+            'accepted_applications' => $acceptedApplications,
+            'recent_applications' => $recentApplications
+        ]);
+    }
+
     public function profile(Request $request)
     {
         $user = $request->user()->load('jobSeeker');
