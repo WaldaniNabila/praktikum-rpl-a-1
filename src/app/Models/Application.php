@@ -17,19 +17,16 @@ class Application extends Model
         'status',
     ];
 
-    // Relasi ke JobSeeker (N:1)
     public function jobSeeker()
     {
         return $this->belongsTo(JobSeeker::class);
     }
 
-    // Relasi ke JobListing (N:1)
     public function jobListing()
     {
         return $this->belongsTo(JobListing::class, 'job_id');
     }
 
-    // Helper cek status
     public function isAccepted()
     {
         return $this->status === 'accepted';

@@ -18,7 +18,7 @@ use App\Models\Company;
 class RegisteredUserController extends Controller
 {
     /**
-     * Display the registration view.
+     * Menampilkan tampilan registrasi.
      */
     public function create(): View
     {
@@ -26,7 +26,7 @@ class RegisteredUserController extends Controller
     }
 
     /**
-     * Handle an incoming registration request.
+     * Menangani permintaan registrasi masuk.
      *
      * @throws ValidationException
      */

@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class UpdateCompanyProfileRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Menentukan apakah pengguna diizinkan untuk membuat permintaan ini.
      */
     public function authorize(): bool
     {
@@ -16,7 +16,7 @@ class UpdateCompanyProfileRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Mendapatkan aturan validasi yang berlaku untuk permintaan ini.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */

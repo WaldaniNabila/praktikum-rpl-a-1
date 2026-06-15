@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\JobListingController;
 
-// Public Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -16,7 +15,6 @@ use App\Http\Controllers\Api\JobSeekerController;
 use App\Http\Controllers\Api\ApplicationController;
 use App\Http\Controllers\Api\BookmarkController;
 
-// Protected Routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
@@ -26,12 +24,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/job-seeker/profile', [JobSeekerController::class, 'profile']);
     Route::post('/job-seeker/profile', [JobSeekerController::class, 'updateProfile']); // POST because of file upload
 
-    // Job Applications
     Route::get('/job-seeker/applications', [ApplicationController::class, 'index']);
     Route::post('/job-seeker/apply/{jobListing}', [ApplicationController::class, 'store']);
     Route::delete('/job-seeker/applications/{application}', [ApplicationController::class, 'destroy']);
 
-    // Bookmarks
     Route::get('/job-seeker/bookmarks', [BookmarkController::class, 'index']);
     Route::post('/job-seeker/bookmark/{jobListing}', [BookmarkController::class, 'toggle']);
 });

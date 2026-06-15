@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    // Tampilkan dashboard perusahaan
     public function index()
     {
         $company = Auth::user()->company;
@@ -36,20 +35,17 @@ class DashboardController extends Controller
         ));
     }
 
-    // Tampilkan profil perusahaan
     public function profile()
     {
         $company = Auth::user()->company;
         return view('company.profile', compact('company'));
     }
 
-    // Update profil perusahaan
     public function updateProfile(\App\Http\Requests\UpdateCompanyProfileRequest $request)
     {
         $user = Auth::user();
         $company = $user->company;
 
-        // Update User table (name & email)
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -69,7 +65,6 @@ class DashboardController extends Controller
         return back()->with('success', 'Profil perusahaan berhasil diupdate!');
     }
 
-    // Tampilkan semua lowongan perusahaan
     public function jobs()
     {
         $company  = Auth::user()->company;
@@ -77,14 +72,12 @@ class DashboardController extends Controller
         return view('company.jobs.index', compact('jobs'));
     }
 
-    // Form buat lowongan baru
     public function createJob()
     {
         $categories = Category::all();
         return view('company.jobs.create', compact('categories'));
     }
 
-    // Simpan lowongan baru
     public function storeJob(Request $request)
     {
         $request->validate([
@@ -120,7 +113,6 @@ class DashboardController extends Controller
             ->with('success', 'Lowongan berhasil diposting! Menunggu persetujuan admin.');
     }
 
-    // Form edit lowongan
     public function editJob(JobListing $jobListing)
     {
         $this->authorizeJob($jobListing);
@@ -128,7 +120,6 @@ class DashboardController extends Controller
         return view('company.jobs.edit', compact('jobListing', 'categories'));
     }
 
-    // Update lowongan
     public function updateJob(Request $request, JobListing $jobListing)
     {
         $this->authorizeJob($jobListing);
@@ -152,7 +143,6 @@ class DashboardController extends Controller
             ->with('success', 'Lowongan berhasil diupdate!');
     }
 
-    // Hapus lowongan
     public function destroyJob(JobListing $jobListing)
     {
         $this->authorizeJob($jobListing);
@@ -161,7 +151,6 @@ class DashboardController extends Controller
             ->with('success', 'Lowongan berhasil dihapus!');
     }
 
-    // Lihat pelamar per lowongan
     public function applicants(JobListing $jobListing)
     {
         $this->authorizeJob($jobListing);
@@ -171,10 +160,8 @@ class DashboardController extends Controller
         return view('company.jobs.applicants', compact('jobListing', 'applications'));
     }
 
-    // Lihat profil pelamar
     public function applicantProfile(\App\Models\JobSeeker $jobSeeker)
     {
-        // Pastikan pelamar pernah melamar ke salah satu lowongan perusahaan ini
         $hasApplied = \App\Models\Application::where('job_seeker_id', $jobSeeker->id)
             ->whereHas('jobListing', function($q) {
                 $q->where('company_id', Auth::user()->company->id);
@@ -189,7 +176,6 @@ class DashboardController extends Controller
         return view('company.job_seekers.show', compact('jobSeeker'));
     }
 
-    // Update status lamaran
     public function updateApplicationStatus(Request $request, Application $application)
     {
         $request->validate([
@@ -201,7 +187,6 @@ class DashboardController extends Controller
         return back()->with('success', 'Status lamaran berhasil diupdate!');
     }
 
-    // Helper authorize
     private function authorizeJob(JobListing $jobListing)
     {
         if ($jobListing->company_id !== Auth::user()->company->id) {

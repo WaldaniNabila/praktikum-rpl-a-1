@@ -9,8 +9,6 @@ class CompanyController extends Controller
 {
     public function show(Company $company)
     {
-        // Pastikan company dalam status verified jika ingin dipublish,
-        // Tapi sementara kita tampilkan saja
         $activeJobs = $company->jobListings()
             ->with('category')
             ->where('status', 'approved')

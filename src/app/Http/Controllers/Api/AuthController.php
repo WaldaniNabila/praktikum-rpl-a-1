@@ -57,7 +57,6 @@ class AuthController extends Controller
             ], 401);
         }
 
-        // Optional: Ensure only job seekers can login via this app if we strictly want that
         if ($user->role !== 'job_seeker') {
             return response()->json([
                 'message' => 'Only Job Seekers are allowed to login via the mobile app.'

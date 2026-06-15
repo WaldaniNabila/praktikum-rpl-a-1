@@ -8,8 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
 
-    {{-- NAVBAR --}}
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 flex items-center h-14 gap-6">
             <a href="{{ route('home') }}" class="text-lg font-semibold text-blue-700 tracking-tight">JobHub</a>
             <a href="{{ route('jobs.index') }}" class="text-sm font-medium text-blue-700">Lowongan</a>
@@ -27,8 +26,7 @@
         </div>
     </nav>
 
-    {{-- HEADER COMPANY --}}
-    <section class="bg-white border-b border-gray-200 py-10 px-6">
+        <section class="bg-white border-b border-gray-200 py-10 px-6">
         <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 items-start md:items-center">
             <div class="w-24 h-24 rounded-2xl bg-blue-50 text-blue-700 text-3xl font-bold flex items-center justify-center shrink-0 border border-blue-100 shadow-sm">
                 @if($company->logo_path)
@@ -66,11 +64,9 @@
         </div>
     </section>
 
-    {{-- MAIN CONTENT --}}
-    <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-10 flex flex-col md:flex-row gap-10">
+        <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-10 flex flex-col md:flex-row gap-10">
         
-        {{-- DESKRIPSI KIRI --}}
-        <div class="flex-1 space-y-8">
+                <div class="flex-1 space-y-8">
             <section>
                 <h2 class="text-xl font-bold text-gray-900 border-b border-gray-200 pb-2 mb-4">Tentang Perusahaan</h2>
                 @if($company->description)
@@ -83,8 +79,7 @@
             </section>
         </div>
 
-        {{-- INFO KANAN --}}
-        <aside class="w-full md:w-80 shrink-0 space-y-6">
+                <aside class="w-full md:w-80 shrink-0 space-y-6">
             <div class="bg-white border border-gray-200 rounded-2xl p-6">
                 <h3 class="font-bold text-gray-900 mb-4">Kontak & Info</h3>
                 
@@ -109,8 +104,7 @@
 
     </main>
 
-    {{-- ACTIVE JOBS --}}
-    <section class="bg-gray-100 border-t border-gray-200 py-12 px-6">
+        <section class="bg-gray-100 border-t border-gray-200 py-12 px-6">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-2xl font-bold text-gray-900 mb-6">Lowongan Terbuka di {{ $company->name }}</h2>
             
@@ -143,8 +137,7 @@
         </div>
     </section>
 
-    {{-- FOOTER --}}
-    <footer class="bg-gray-900 text-white mt-auto py-8">
+        <footer class="bg-gray-900 text-white mt-auto py-8">
         <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-xl font-bold tracking-tight">JobHub</div>
             <div class="text-sm text-gray-400">© {{ date('Y') }} JobHub. Hak Cipta Dilindungi.</div>

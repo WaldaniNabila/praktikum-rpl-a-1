@@ -7,8 +7,7 @@
             <div class="flex-1 bg-slate-50 overflow-y-auto">
                 <main class="p-8 lg:p-12 space-y-10 max-w-[1000px] mx-auto">
                     
-                    {{-- HEADER --}}
-                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                             <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Profil Pelamar</h1>
                             <p class="text-slate-500 mt-2">Perbarui informasi profil dan CV Anda agar lebih menarik di mata perusahaan.</p>
@@ -40,8 +39,7 @@
                             @method('PUT')
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {{-- KIRI --}}
-                                <div class="space-y-6">
+                                                                <div class="space-y-6">
                                     <div>
                                         <label for="name" class="block text-sm font-bold text-slate-700 mb-2">Nama Lengkap</label>
                                         <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required
@@ -71,8 +69,7 @@
                                     </div>
                                 </div>
 
-                                {{-- KANAN --}}
-                                <div class="space-y-6">
+                                                                <div class="space-y-6">
                                     <div>
                                         <label class="block text-sm font-bold text-slate-700 mb-2">Foto Profil (JPG/PNG)</label>
                                         <div class="mt-2 mb-4" id="profile-preview-container" style="{{ $jobSeeker->profile_picture ? '' : 'display: none;' }}">
