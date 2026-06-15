@@ -21,7 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
     
-    // Job Seeker Profile
+    // Job Seeker Profile & Dashboard
+    Route::get('/job-seeker/dashboard', [JobSeekerController::class, 'dashboard']);
     Route::get('/job-seeker/profile', [JobSeekerController::class, 'profile']);
     Route::post('/job-seeker/profile', [JobSeekerController::class, 'updateProfile']); // POST because of file upload
 
