@@ -17,13 +17,11 @@ class Bookmark extends Model
         'created_at',
     ];
 
-    // Relasi ke JobSeeker (N:1)
     public function jobSeeker()
     {
         return $this->belongsTo(JobSeeker::class);
     }
 
-    // Relasi ke JobListing (N:1)
     public function jobListing()
     {
         return $this->belongsTo(JobListing::class, 'job_id');

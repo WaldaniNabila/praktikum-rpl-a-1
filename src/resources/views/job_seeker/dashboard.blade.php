@@ -7,8 +7,7 @@
             <div class="flex-1 bg-slate-50 overflow-y-auto">
                 <main class="p-8 lg:p-12 space-y-10 max-w-[1600px] mx-auto">
                     
-                    {{-- HEADER --}}
-                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                             <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Dashboard Pelamar</h1>
                             <p class="text-slate-500 mt-2">Selamat datang kembali, pantau status lamaranmu di sini.</p>
@@ -35,8 +34,7 @@
                         </div>
                     </div>
 
-                    {{-- CARDS --}}
-                    <div class="grid gap-6 grid-cols-1 sm:grid-cols-3">
+                                        <div class="grid gap-6 grid-cols-1 sm:grid-cols-3">
                         <div class="rounded-2xl bg-white p-6 shadow-sm border border-slate-100/80 hover:shadow-md transition">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">📄</div>
@@ -60,8 +58,7 @@
                         </div>
                     </div>
 
-                    {{-- RECENT APPLICATIONS --}}
-                    <section class="rounded-2xl bg-white p-6 shadow-sm border border-slate-100/80">
+                                        <section class="rounded-2xl bg-white p-6 shadow-sm border border-slate-100/80">
                         <div class="flex items-center justify-between mb-8">
                             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Lamaran Terbaru</h2>
                             <a href="{{ route('job_seeker.applications') }}" class="text-sm font-bold text-blue-600 hover:text-blue-700 hover:underline">

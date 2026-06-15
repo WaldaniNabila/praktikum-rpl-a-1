@@ -7,8 +7,7 @@
             <div class="flex-1 bg-slate-50 overflow-y-auto">
                 <main class="p-8 lg:p-12 space-y-10 max-w-[1600px] mx-auto">
                     
-                    {{-- HEADER --}}
-                    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                         <div>
                             <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Lowongan Tersimpan</h1>
                             <p class="text-slate-500 mt-2">Kumpulan pekerjaan yang kamu bookmark untuk dilamar nanti.</p>
@@ -21,8 +20,7 @@
                         </div>
                     @endif
 
-                    {{-- BOOKMARKS LIST --}}
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         @forelse($bookmarks ?? [] as $bookmark)
                             <div class="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-blue-300 transition-all group flex flex-col h-full">
                                 <div class="flex gap-4 items-start mb-4">

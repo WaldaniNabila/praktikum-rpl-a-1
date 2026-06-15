@@ -32,31 +32,26 @@ class JobListing extends Model
         'salary_max' => 'integer',
     ];
 
-    // Relasi ke Company (N:1)
     public function company()
     {
         return $this->belongsTo(Company::class);
     }
 
-    // Relasi ke Category (N:1)
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // Relasi ke Applications (1:N)
     public function applications()
     {
         return $this->hasMany(Application::class, 'job_id');
     }
 
-    // Relasi ke Bookmarks (1:N)
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);
     }
 
-    // Helper cek status
     public function isApproved()
     {
         return $this->status === 'approved';

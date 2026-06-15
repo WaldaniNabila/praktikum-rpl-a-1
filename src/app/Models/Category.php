@@ -16,7 +16,6 @@ class Category extends Model
         'slug',
     ];
 
-    // Relasi ke JobListings (1:N)
     public function jobListings()
     {
         return $this->hasMany(JobListing::class);

@@ -11,34 +11,27 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
-// ─── PUBLIC ──────────────────────────────────────────────────────────────────
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
-// Lowongan publik
 Route::get('/lowongan', [JobListingController::class, 'index'])->name('jobs.index');
 Route::get('/lowongan/{jobListing}', [JobListingController::class, 'show'])->name('jobs.show');
 
-// Profil Perusahaan (public)
 Route::get('/perusahaan/{company}', [CompanyController::class, 'show'])->name('companies.show');
 
-// ─── JOB SEEKER ──────────────────────────────────────────────────────────────
 Route::middleware(['auth', 'verified', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
     Route::get('/dashboard',     [JobSeekerDashboard::class, 'index'])->name('dashboard');
     Route::get('/lamaran',       [JobSeekerDashboard::class, 'applications'])->name('applications');
     Route::get('/profil',        [JobSeekerDashboard::class, 'profile'])->name('profile');
     Route::put('/profil',        [JobSeekerDashboard::class, 'updateProfile'])->name('profile.update');
 
-    // Apply lamaran
     Route::post('/lamar/{jobListing}',        [ApplicationController::class, 'store'])->name('apply');
     Route::delete('/lamaran/{application}',   [ApplicationController::class, 'destroy'])->name('application.cancel');
 
-    // Bookmark
     Route::post('/bookmark/{jobListing}',     [BookmarkController::class, 'toggle'])->name('bookmark.toggle');
     Route::get('/tersimpan',                  [BookmarkController::class, 'index'])->name('bookmarks');
     
 });
 
-// ─── COMPANY ─────────────────────────────────────────────────────────────────
 Route::middleware(['auth', 'verified', 'role:company'])->prefix('company')->name('company.')->group(function () {
     Route::get('/dashboard',                  [CompanyDashboard::class, 'index'])->name('dashboard');
     Route::get('/profil',                     [CompanyDashboard::class, 'profile'])->name('profile');
@@ -54,32 +47,26 @@ Route::middleware(['auth', 'verified', 'role:company'])->prefix('company')->name
     Route::put('/lamaran/{application}/status',  [CompanyDashboard::class, 'updateApplicationStatus'])->name('application.status');
 });
 
-// ─── ADMIN ───────────────────────────────────────────────────────────────────
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard',                  [AdminDashboard::class, 'index'])->name('dashboard');
 
-    // Kelola lowongan
     Route::get('/lowongan',                   [AdminDashboard::class, 'jobs'])->name('jobs');
     Route::put('/lowongan/{jobListing}/approve', [AdminDashboard::class, 'approveJob'])->name('jobs.approve');
     Route::put('/lowongan/{jobListing}/reject',  [AdminDashboard::class, 'rejectJob'])->name('jobs.reject');
 
-    // Kelola user
     Route::get('/users',                      [AdminDashboard::class, 'users'])->name('users');
     Route::put('/users/{user}/toggle',        [AdminDashboard::class, 'toggleUser'])->name('users.toggle');
     Route::delete('/users/{user}',            [AdminDashboard::class, 'destroyUser'])->name('users.destroy');
 
-    // Kelola perusahaan
     Route::get('/perusahaan',                 [AdminDashboard::class, 'companies'])->name('companies');
     Route::put('/perusahaan/{company}/verify', [AdminDashboard::class, 'verifyCompany'])->name('companies.verify');
     Route::put('/perusahaan/{company}/reject', [AdminDashboard::class, 'rejectCompany'])->name('companies.reject');
 
-    // Kelola kategori
     Route::get('/kategori',                   [AdminDashboard::class, 'categories'])->name('categories');
     Route::post('/kategori',                  [AdminDashboard::class, 'storeCategory'])->name('categories.store');
     Route::delete('/kategori/{category}',     [AdminDashboard::class, 'destroyCategory'])->name('categories.destroy');
 });
 
-// ─── BREEZE AUTH ─────────────────────────────────────────────────────────────
 Route::get('/dashboard', function () {
     $user = auth()->user();
     return match ($user->role) {

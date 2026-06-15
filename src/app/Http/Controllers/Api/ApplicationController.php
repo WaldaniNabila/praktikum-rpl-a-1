@@ -37,7 +37,6 @@ class ApplicationController extends Controller
             return response()->json(['message' => 'Job is not open for applications.'], 400);
         }
 
-        // Check if already applied
         $exists = Application::where('job_seeker_id', $user->jobSeeker->id)
             ->where('job_id', $jobListing->id)
             ->exists();
