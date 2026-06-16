@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\JobSeeker;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -32,14 +34,43 @@ class AuthController extends Controller
             'phone' => $request->phone,
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Trigger event Registered agar email OTP terkirim
+        event(new Registered($user));
 
         return response()->json([
-            'message' => 'Registration successful',
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user
+            'message' => 'Registration successful. Please check your email for OTP verification code.',
         ], 201);
+    }
+
+    public function verifyOtp(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email',
+            'otp_code' => 'required|string|size:6',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found.'
+            ], 404);
+        }
+
+        $cachedOtp = Cache::get('otp_verification_' . $user->id);
+
+        if (!$cachedOtp || $cachedOtp != $request->otp_code) {
+            return response()->json([
+                'message' => 'Kode OTP salah atau sudah kedaluwarsa.'
+            ], 422);
+        }
+
+        $user->markEmailAsVerified();
+        Cache::forget('otp_verification_' . $user->id);
+
+        return response()->json([
+            'message' => 'Email berhasil diverifikasi! Silakan login.'
+        ]);
     }
 
     public function login(Request $request)
