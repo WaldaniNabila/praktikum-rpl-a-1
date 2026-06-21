@@ -11,8 +11,7 @@ class JobListingController extends Controller
     public function index(Request $request)
     {
         $query = JobListing::with(['company', 'category'])
-            ->where('status', 'approved')
-            ->where('is_open', true);
+            ->where('status', 'approved');
 
         if ($request->q) {
             $query->where(function($q) use ($request) {

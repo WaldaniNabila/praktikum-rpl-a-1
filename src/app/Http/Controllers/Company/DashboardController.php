@@ -88,8 +88,8 @@ class DashboardController extends Controller
             'location'        => ['required', 'string', 'max:100'],
             'employment_type' => ['required', 'in:full-time,part-time,contract,internship'],
             'work_type'       => ['required', 'in:remote,on-site,hybrid'],
-            'salary_min'      => ['nullable', 'integer'],
-            'salary_max'      => ['nullable', 'integer'],
+            'salary_min'      => ['nullable', 'integer', 'min:0'],
+            'salary_max'      => ['nullable', 'integer', 'gte:salary_min'],
         ]);
 
         $company = Auth::user()->company;
@@ -132,8 +132,8 @@ class DashboardController extends Controller
             'location'        => ['required', 'string', 'max:100'],
             'employment_type' => ['required', 'in:full-time,part-time,contract,internship'],
             'work_type'       => ['required', 'in:remote,on-site,hybrid'],
-            'salary_min'      => ['nullable', 'integer'],
-            'salary_max'      => ['nullable', 'integer'],
+            'salary_min'      => ['nullable', 'integer', 'min:0'],
+            'salary_max'      => ['nullable', 'integer', 'gte:salary_min'],
             'is_open'         => ['required', 'boolean'],
         ]);
 

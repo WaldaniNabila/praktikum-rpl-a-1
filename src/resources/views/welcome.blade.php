@@ -137,7 +137,11 @@
                             </div>
                             <div class="text-xs text-gray-500">{{ $job->company->name }}</div>
                         </div>
-                        <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 shrink-0">Buka</span>
+                        @if(!$job->is_open)
+                            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 shrink-0">Ditutup</span>
+                        @else
+                            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-teal-50 text-teal-800 shrink-0">Buka</span>
+                        @endif
                     </div>
                     <div class="flex flex-wrap gap-1.5 mb-2">
                         <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 font-medium">{{ $job->employment_type }}</span>
@@ -149,7 +153,7 @@
                     <div class="flex items-center gap-2 border-t border-gray-100 pt-3">
                         <span class="text-xs font-semibold text-blue-700 flex-1">
                             @if($job->salary_min && $job->salary_max)
-                                Rp {{ number_format($job->salary_min/1000000, 0) }}–{{ number_format($job->salary_max/1000000, 0) }} jt/bln
+                                Rp {{ number_format($job->salary_min, 0, ',', '.') }} - Rp {{ number_format($job->salary_max, 0, ',', '.') }} /bln
                             @else
                                 Negotiable
                             @endif
