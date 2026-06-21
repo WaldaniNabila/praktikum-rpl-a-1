@@ -118,12 +118,17 @@
                             <span class="text-xs px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 font-medium">{{ $job->employment_type }}</span>
                             <span class="text-xs px-2.5 py-1 rounded-full bg-purple-50 text-purple-800 font-medium">{{ $job->work_type }}</span>
                             <span class="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-700 font-medium">{{ $job->location }}</span>
+                            @if(!$job->is_open)
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 font-bold border border-rose-200">Ditutup</span>
+                            @else
+                                <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">Buka</span>
+                            @endif
                         </div>
                         
                         <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                             <span class="text-sm font-semibold text-green-700">
                                 @if($job->salary_min && $job->salary_max)
-                                    Rp {{ number_format($job->salary_min/1000000, 0) }}–{{ number_format($job->salary_max/1000000, 0) }} jt
+                                    Rp {{ number_format($job->salary_min, 0, ',', '.') }} - Rp {{ number_format($job->salary_max, 0, ',', '.') }}
                                 @else
                                     Gaji Disembunyikan
                                 @endif
