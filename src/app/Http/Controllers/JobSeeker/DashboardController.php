@@ -86,4 +86,28 @@ class DashboardController extends Controller
 
         return back()->with('success', 'Profil berhasil diupdate!');
     }
+
+    public function deleteProfilePicture()
+    {
+        $jobSeeker = Auth::user()->jobSeeker;
+
+        if ($jobSeeker->profile_picture) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->profile_picture);
+            $jobSeeker->update(['profile_picture' => null]);
+        }
+
+        return back()->with('success', 'Foto profil berhasil dihapus!');
+    }
+
+    public function deleteCv()
+    {
+        $jobSeeker = Auth::user()->jobSeeker;
+
+        if ($jobSeeker->cv_path) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->cv_path);
+            $jobSeeker->update(['cv_path' => null]);
+        }
+
+        return back()->with('success', 'CV berhasil dihapus!');
+    }
 }

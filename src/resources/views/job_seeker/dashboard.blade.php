@@ -92,8 +92,17 @@
                                                 <span class="inline-flex rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold text-amber-700 border border-amber-100 uppercase tracking-wider">Menunggu</span>
                                             @endif
                                         </td>
-                                        <td class="py-4 text-right">
+                                        <td class="py-4 text-right flex justify-end gap-2">
                                             <a href="{{ route('jobs.show', $app->jobListing->id) }}" class="rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-bold text-blue-700 hover:bg-blue-100 transition inline-block">Detail Lowongan</a>
+                                            @if($app->status === 'waiting')
+                                                <form action="{{ route('job_seeker.application.cancel', $app->id) }}" method="POST" onsubmit="return confirm('Yakin ingin membatalkan lamaran ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 hover:bg-rose-100 transition">
+                                                        Batalkan
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @empty

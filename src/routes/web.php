@@ -29,6 +29,9 @@ Route::middleware(['auth', 'verified', 'role:job_seeker'])->prefix('job-seeker')
 
     Route::post('/bookmark/{jobListing}',     [BookmarkController::class, 'toggle'])->name('bookmark.toggle');
     Route::get('/tersimpan',                  [BookmarkController::class, 'index'])->name('bookmarks');
+
+    Route::delete('/profil/foto',             [JobSeekerDashboard::class, 'deleteProfilePicture'])->name('profile.photo.delete');
+    Route::delete('/profil/cv',               [JobSeekerDashboard::class, 'deleteCv'])->name('profile.cv.delete');
     
 });
 
@@ -36,6 +39,7 @@ Route::middleware(['auth', 'verified', 'role:company'])->prefix('company')->name
     Route::get('/dashboard',                  [CompanyDashboard::class, 'index'])->name('dashboard');
     Route::get('/profil',                     [CompanyDashboard::class, 'profile'])->name('profile');
     Route::put('/profil',                     [CompanyDashboard::class, 'updateProfile'])->name('profile.update');
+    Route::delete('/profil/logo',             [CompanyDashboard::class, 'deleteLogo'])->name('profile.logo.delete');
     Route::get('/lowongan',                   [CompanyDashboard::class, 'jobs'])->name('jobs');
     Route::get('/lowongan/buat',              [CompanyDashboard::class, 'createJob'])->name('jobs.create');
     Route::post('/lowongan',                  [CompanyDashboard::class, 'storeJob'])->name('jobs.store');

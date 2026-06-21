@@ -65,6 +65,18 @@ class DashboardController extends Controller
         return back()->with('success', 'Profil perusahaan berhasil diupdate!');
     }
 
+    public function deleteLogo()
+    {
+        $company = Auth::user()->company;
+
+        if ($company->logo_path) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($company->logo_path);
+            $company->update(['logo_path' => null]);
+        }
+
+        return back()->with('success', 'Logo perusahaan berhasil dihapus!');
+    }
+
     public function jobs()
     {
         $company  = Auth::user()->company;
