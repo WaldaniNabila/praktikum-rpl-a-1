@@ -71,9 +71,8 @@ class DashboardController extends Controller
             return back()->with('error', 'Tidak bisa menonaktifkan admin!');
         }
 
-        $user->update([
-            'email_verified_at' => $user->email_verified_at ? null : now(),
-        ]);
+        $user->email_verified_at = $user->email_verified_at ? null : now();
+        $user->save();
 
         return back()->with('success', 'Status user berhasil diubah!');
     }

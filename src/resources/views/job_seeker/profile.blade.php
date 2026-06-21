@@ -83,6 +83,9 @@
                                         <input type="file" id="profile_picture" name="profile_picture" accept="image/*"
                                             onchange="if(this.files[0]) { document.getElementById('profile-preview-container').style.display='block'; document.getElementById('profile-preview').src = window.URL.createObjectURL(this.files[0]); var placeholder = document.getElementById('no-profile-placeholder'); if(placeholder) placeholder.style.display='none'; }"
                                             class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors" />
+                                        @if($jobSeeker->profile_picture)
+                                            <button type="submit" form="delete-photo-form" onclick="return confirm('Hapus foto profil?')" class="text-xs font-semibold text-rose-600 hover:text-rose-800 transition mt-2 block">🗑 Hapus Foto Profil</button>
+                                        @endif
                                         @error('profile_picture') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                                     </div>
 
@@ -97,6 +100,7 @@
                                                         <a href="{{ asset('storage/' . $jobSeeker->cv_path) }}" target="_blank" class="text-xs text-emerald-600 hover:underline">Lihat file saat ini</a>
                                                     </div>
                                                 </div>
+                                                <button type="submit" form="delete-cv-form" onclick="return confirm('Hapus CV ini?')" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-100 transition">🗑 Hapus CV</button>
                                             </div>
                                         @else
                                             <div class="mb-4 bg-rose-50 border border-rose-100 rounded-xl p-4 flex items-center gap-3">
@@ -120,6 +124,20 @@
                             </div>
                         </form>
                     </section>
+
+                    @if($jobSeeker->profile_picture)
+                    <form id="delete-photo-form" method="POST" action="{{ route('job_seeker.profile.photo.delete') }}" class="hidden">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    @endif
+
+                    @if($jobSeeker->cv_path)
+                    <form id="delete-cv-form" method="POST" action="{{ route('job_seeker.profile.cv.delete') }}" class="hidden">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                    @endif
 
                 </main>
             </div>

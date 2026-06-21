@@ -68,22 +68,22 @@
                                             @endif
                                         </td>
                                         <td class="py-4 text-right">
-                                            @if($job->status === 'pending')
-                                                <div class="flex items-center justify-end gap-2">
-                                                    <form action="{{ route('admin.jobs.approve', $job->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Setujui lowongan ini?')">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <button type="submit" class="rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition">Approve</button>
-                                                    </form>
-                                                    <form action="{{ route('admin.jobs.reject', $job->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Tolak lowongan ini?')">
-                                                        @csrf
-                                                        @method('PUT')
-                                                        <button type="submit" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 hover:bg-rose-100 transition">Reject</button>
-                                                    </form>
-                                                </div>
-                                            @else
-                                                <span class="text-xs text-slate-400 italic">No action needed</span>
-                                            @endif
+                                            <div class="flex items-center justify-end gap-2">
+                                                @if($job->status !== 'approved')
+                                                <form action="{{ route('admin.jobs.approve', $job->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Setujui lowongan ini?')">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="rounded-lg bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition">Approve</button>
+                                                </form>
+                                                @endif
+                                                @if($job->status !== 'rejected')
+                                                <form action="{{ route('admin.jobs.reject', $job->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Tolak lowongan ini?')">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-700 hover:bg-rose-100 transition">Reject</button>
+                                                </form>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                     @empty

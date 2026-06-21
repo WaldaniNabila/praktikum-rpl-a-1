@@ -69,6 +69,13 @@
                                     @endif
                                 </div>
                                 <input type="file" name="logo_path" accept="image/*" onchange="if(this.files[0]){ var p=document.getElementById('logo-preview-placeholder'); if(p) p.classList.add('hidden'); var img=document.getElementById('logo-preview'); img.src=window.URL.createObjectURL(this.files[0]); img.classList.remove('hidden'); }" class="w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition">
+                                @if(isset($company) && $company->logo_path)
+                                    <form method="POST" action="{{ route('company.profile.logo.delete') }}" onsubmit="return confirm('Hapus logo perusahaan?')" class="mt-2">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-xs font-semibold text-rose-600 hover:text-rose-800 transition">🗑 Hapus Logo</button>
+                                    </form>
+                                @endif
                                 <p class="text-xs text-slate-400 mt-2">Format yang didukung: JPG, PNG, GIF. Maksimal ukuran 2MB.</p>
                             </div>
 
