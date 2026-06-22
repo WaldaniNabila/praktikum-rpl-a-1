@@ -51,6 +51,7 @@ class JobSeekerController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'nullable|string|max:20',
             'resume' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $user->update([
@@ -58,11 +59,25 @@ class JobSeekerController extends Controller
         ]);
 
         $jobSeeker = $user->jobSeeker ?? new JobSeeker(['user_id' => $user->id]);
-        $jobSeeker->phone = $request->phone;
+        if ($request->has('phone')) {
+            $jobSeeker->phone = $request->phone;
+        }
 
         if ($request->hasFile('resume')) {
-            $path = $request->file('resume')->store('resumes', 'public');
-            $jobSeeker->resume = $path;
+            if ($jobSeeker->cv_path) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->cv_path);
+            }
+            $path = $request->file('resume')->store('cv', 'public');
+            $jobSeeker->cv_path = $path;
+            $jobSeeker->resume = $path; // for backward compatibility if needed
+        }
+
+        if ($request->hasFile('profile_picture')) {
+            if ($jobSeeker->profile_picture) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->profile_picture);
+            }
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $jobSeeker->profile_picture = $path;
         }
 
         $jobSeeker->save();
@@ -71,5 +86,31 @@ class JobSeekerController extends Controller
             'message' => 'Profile updated successfully',
             'user' => $user->load('jobSeeker')
         ]);
+    }
+
+    public function deleteProfilePicture(Request $request)
+    {
+        $jobSeeker = $request->user()->jobSeeker;
+
+        if ($jobSeeker && $jobSeeker->profile_picture) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->profile_picture);
+            $jobSeeker->update(['profile_picture' => null]);
+            return response()->json(['message' => 'Profile picture deleted successfully', 'user' => $request->user()->load('jobSeeker')]);
+        }
+
+        return response()->json(['message' => 'No profile picture found'], 404);
+    }
+
+    public function deleteCv(Request $request)
+    {
+        $jobSeeker = $request->user()->jobSeeker;
+
+        if ($jobSeeker && $jobSeeker->cv_path) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->cv_path);
+            $jobSeeker->update(['cv_path' => null, 'resume' => null]);
+            return response()->json(['message' => 'CV deleted successfully', 'user' => $request->user()->load('jobSeeker')]);
+        }
+
+        return response()->json(['message' => 'No CV found'], 404);
     }
 }
