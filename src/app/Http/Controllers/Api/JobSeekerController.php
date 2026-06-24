@@ -69,7 +69,6 @@ class JobSeekerController extends Controller
             }
             $path = $request->file('resume')->store('cv', 'public');
             $jobSeeker->cv_path = $path;
-            $jobSeeker->resume = $path; // for backward compatibility if needed
         }
 
         if ($request->hasFile('profile_picture')) {
@@ -107,7 +106,7 @@ class JobSeekerController extends Controller
 
         if ($jobSeeker && $jobSeeker->cv_path) {
             \Illuminate\Support\Facades\Storage::disk('public')->delete($jobSeeker->cv_path);
-            $jobSeeker->update(['cv_path' => null, 'resume' => null]);
+            $jobSeeker->update(['cv_path' => null]);
             return response()->json(['message' => 'CV deleted successfully', 'user' => $request->user()->load('jobSeeker')]);
         }
 
