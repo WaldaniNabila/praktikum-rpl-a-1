@@ -47,13 +47,25 @@ class ApplicationController extends Controller
 
         $request->validate([
             'cover_letter' => 'required|string',
+            'cv_path' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
         ]);
+
+        $cvPath = null;
+        if ($request->hasFile('cv_path')) {
+            $cvPath = $request->file('cv_path')->store('cv', 'public');
+        } else {
+            $cvPath = $user->jobSeeker->cv_path;
+            if (!$cvPath) {
+                return response()->json(['message' => 'You must upload a CV. Please upload here or complete it in your profile.'], 400);
+            }
+        }
 
         $application = Application::create([
             'job_id' => $jobListing->id,
             'job_seeker_id' => $user->jobSeeker->id,
             'cover_letter' => $request->cover_letter,
-            'status' => 'pending'
+            'cv_path' => $cvPath,
+            'status' => 'waiting'
         ]);
 
         return response()->json([
@@ -71,8 +83,12 @@ class ApplicationController extends Controller
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
-        if ($application->status !== 'pending') {
+        if ($application->status !== 'waiting') {
             return response()->json(['message' => 'Cannot cancel an application that is already processed.'], 400);
+        }
+
+        if ($application->cv_path && $application->cv_path !== $user->jobSeeker->cv_path) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($application->cv_path);
         }
 
         $application->delete();

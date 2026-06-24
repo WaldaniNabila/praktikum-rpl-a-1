@@ -24,6 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/job-seeker/dashboard', [JobSeekerController::class, 'dashboard']);
     Route::get('/job-seeker/profile', [JobSeekerController::class, 'profile']);
     Route::post('/job-seeker/profile', [JobSeekerController::class, 'updateProfile']); // POST because of file upload
+    Route::delete('/job-seeker/profile/photo', [JobSeekerController::class, 'deleteProfilePicture']);
+    Route::delete('/job-seeker/profile/cv', [JobSeekerController::class, 'deleteCv']);
 
     Route::get('/job-seeker/applications', [ApplicationController::class, 'index']);
     Route::post('/job-seeker/apply/{jobListing}', [ApplicationController::class, 'store']);
