@@ -84,7 +84,7 @@
                                             onchange="if(this.files[0]) { document.getElementById('profile-preview-container').style.display='block'; document.getElementById('profile-preview').src = window.URL.createObjectURL(this.files[0]); var placeholder = document.getElementById('no-profile-placeholder'); if(placeholder) placeholder.style.display='none'; }"
                                             class="block w-full text-sm text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors" />
                                         @if($jobSeeker->profile_picture)
-                                            <button type="submit" form="delete-photo-form" onclick="return confirm('Hapus foto profil?')" class="text-xs font-semibold text-rose-600 hover:text-rose-800 transition mt-2 block">🗑 Hapus Foto Profil</button>
+                                            <button type="submit" form="delete-photo-form" onclick="return confirm('Hapus foto profil?')" class="text-xs font-semibold text-rose-600 hover:text-rose-800 transition mt-2 flex items-center gap-1"><svg class="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg> Hapus Foto Profil</button>
                                         @endif
                                         @error('profile_picture') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
                                     </div>
@@ -94,17 +94,17 @@
                                         @if($jobSeeker->cv_path)
                                             <div class="mb-4 bg-emerald-50 border border-emerald-100 rounded-xl p-4 flex items-center justify-between">
                                                 <div class="flex items-center gap-3">
-                                                    <span class="text-2xl">📄</span>
+                                                    <span class="text-emerald-600"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg></span>
                                                     <div>
                                                         <p class="text-sm font-bold text-emerald-800">CV Sudah Diupload</p>
                                                         <a href="{{ asset('storage/' . $jobSeeker->cv_path) }}" target="_blank" class="text-xs text-emerald-600 hover:underline">Lihat file saat ini</a>
                                                     </div>
                                                 </div>
-                                                <button type="submit" form="delete-cv-form" onclick="return confirm('Hapus CV ini?')" class="rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-100 transition">🗑 Hapus CV</button>
+                                                <button type="submit" form="delete-cv-form" onclick="return confirm('Hapus CV ini?')" class="flex items-center gap-1 rounded-lg bg-rose-50 px-3 py-1.5 text-xs font-bold text-rose-600 hover:bg-rose-100 transition"><svg class="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg> Hapus CV</button>
                                             </div>
                                         @else
                                             <div class="mb-4 bg-rose-50 border border-rose-100 rounded-xl p-4 flex items-center gap-3">
-                                                <span class="text-2xl">⚠️</span>
+                                                <span class="text-rose-600"><svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg></span>
                                                 <p class="text-sm font-bold text-rose-800">Anda belum mengupload CV utama.</p>
                                             </div>
                                         @endif

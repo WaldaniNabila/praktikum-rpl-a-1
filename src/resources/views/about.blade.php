@@ -48,15 +48,15 @@
                     <h3 class="text-xl font-bold text-gray-900 mb-4">Mengapa JobHub?</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-3">
-                            <span class="text-blue-600">✓</span>
+                            <span class="text-blue-600"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
                             <span class="text-gray-600">Ribuan lowongan pekerjaan terbaru setiap hari.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-blue-600">✓</span>
+                            <span class="text-blue-600"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
                             <span class="text-gray-600">Proses melamar yang mudah dan transparan.</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-blue-600">✓</span>
+                            <span class="text-blue-600"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
                             <span class="text-gray-600">Terhubung langsung dengan perusahaan terpercaya.</span>
                         </li>
                     </ul>
