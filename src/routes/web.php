@@ -12,6 +12,7 @@ use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/tentang-kami', [LandingController::class, 'about'])->name('about');
 
 Route::get('/lowongan', [JobListingController::class, 'index'])->name('jobs.index');
 Route::get('/lowongan/{jobListing}', [JobListingController::class, 'show'])->name('jobs.show');
