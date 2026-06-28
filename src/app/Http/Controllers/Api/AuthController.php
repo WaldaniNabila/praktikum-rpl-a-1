@@ -34,11 +34,10 @@ class AuthController extends Controller
             'phone' => $request->phone,
         ]);
 
-        // Trigger event Registered agar email OTP terkirim
-        event(new Registered($user));
+        $user->markEmailAsVerified();
 
         return response()->json([
-            'message' => 'Registration successful. Please check your email for OTP verification code.',
+            'message' => 'Registration successful. You can now login.',
         ], 201);
     }
 
