@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
             'role' => $request->role ?? 'job_seeker',
         ]);
 
-        event(new Registered($user));
+        $user->markEmailAsVerified();
 
         Auth::login($user);
 
@@ -66,6 +66,6 @@ class RegisteredUserController extends Controller
             ]);
         }
 
-        return redirect()->route('verification.notice');
+        return redirect()->route('dashboard');
     }
 }
