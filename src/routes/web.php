@@ -19,7 +19,7 @@ Route::get('/lowongan/{jobListing}', [JobListingController::class, 'show'])->nam
 
 Route::get('/perusahaan/{company}', [CompanyController::class, 'show'])->name('companies.show');
 
-Route::middleware(['auth', 'verified', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
+Route::middleware(['auth', 'role:job_seeker'])->prefix('job-seeker')->name('job_seeker.')->group(function () {
     Route::get('/dashboard',     [JobSeekerDashboard::class, 'index'])->name('dashboard');
     Route::get('/lamaran',       [JobSeekerDashboard::class, 'applications'])->name('applications');
     Route::get('/profil',        [JobSeekerDashboard::class, 'profile'])->name('profile');
@@ -36,7 +36,7 @@ Route::middleware(['auth', 'verified', 'role:job_seeker'])->prefix('job-seeker')
     
 });
 
-Route::middleware(['auth', 'verified', 'role:company'])->prefix('company')->name('company.')->group(function () {
+Route::middleware(['auth', 'role:company'])->prefix('company')->name('company.')->group(function () {
     Route::get('/dashboard',                  [CompanyDashboard::class, 'index'])->name('dashboard');
     Route::get('/profil',                     [CompanyDashboard::class, 'profile'])->name('profile');
     Route::put('/profil',                     [CompanyDashboard::class, 'updateProfile'])->name('profile.update');
@@ -80,7 +80,7 @@ Route::get('/dashboard', function () {
         'job_seeker' => redirect()->route('job_seeker.dashboard'),
         default      => abort(403),
     };
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

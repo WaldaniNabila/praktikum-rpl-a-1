@@ -9,7 +9,7 @@ Proyek Praktikum Rekayasa Perangkat Lunak (RPL) — Kelompok A-1
 ## Daftar Fitur Utama
 
 ### Autentikasi dan Otorisasi
-- Registrasi akun dengan pilihan role (Pencari Kerja / Perusahaan)
+- Registrasi akun dengan pilihan role (Pencari Kerja / Perusahaan) dan verifikasi instan
 - Login, logout, lupa password, dan reset password
 - Role-based access control untuk tiga role utama
 
@@ -263,6 +263,8 @@ Seluruh dokumentasi proyek tersedia di folder [`docs/`](./docs/):
 | [Test Cases](./docs/test-cases.md)                   | Skenario pengujian aplikasi             |
 | [User Manual](./docs/user-manual.md)                 | Panduan penggunaan aplikasi             |
 | [Team Contract](./docs/team-contract.md)             | Kontrak kerja tim                       |
+| [Changelog](./CHANGELOG.md)                          | Riwayat perubahan versi aplikasi        |
+| [AI-Usage Log](./AI-USAGE-LOG.md)                    | Log penggunaan AI selama pengembangan   |
 
 ---
 
