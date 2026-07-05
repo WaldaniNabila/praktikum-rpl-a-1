@@ -5,23 +5,17 @@ Semua perubahan yang signifikan pada proyek JOBHUB didokumentasikan pada file in
 ## [v1.0.0] - 2026-06-27
 
 ### Added
-- Implementasi sistem autentikasi *multi-role* (Admin, Perusahaan, dan Pelamar).
-- Penambahan modul manajemen profil perusahaan yang terintegrasi dengan fitur unggah logo.
-- Penambahan modul manajemen profil pelamar yang dilengkapi fasilitas unggah dokumen CV dan pas foto.
-- Pembuatan antarmuka *dashboard* terdedikasi untuk masing-masing *role* beserta ringkasan data analitik.
-- Pengembangan fitur pengelolaan lowongan pekerjaan (pembuatan, pengeditan, dan publikasi) untuk pihak perusahaan.
-- Integrasi sistem pencarian dan filtrasi lowongan pekerjaan berdasarkan kategori, tipe pekerjaan, dan lokasi.
-- Penerapan alur rekrutmen komprehensif yang memungkinkan perusahaan untuk melacak, menerima, maupun menolak kandidat.
-- Implementasi sistem validasi oleh Admin untuk persetujuan penayangan lowongan pekerjaan dan verifikasi akun perusahaan baru.
-- Peningkatan kualitas UI/UX yang responsif menggunakan *framework* Tailwind CSS, diiringi dengan penggunaan aset ikon SVG.
+- **Autentikasi Multi-Role**: Sistem login dan registrasi khusus untuk Administrator, Perusahaan, dan Pencari Kerja.
+- **Manajemen Lowongan**: Perusahaan dapat membuat dan mengelola lowongan, dengan validasi/persetujuan dari Administrator.
+- **Alur Pelamaran Kerja**: Pencari kerja dapat mencari, memfilter, menyimpan (*bookmark*), dan melamar lowongan pekerjaan.
+- **Manajemen Profil**: Pengaturan profil lengkap, termasuk unggah logo perusahaan, serta foto profil dan CV untuk pencari kerja.
+- **Dashboard Terdedikasi**: Antarmuka khusus untuk tiap *role* dengan ringkasan statistik (total pelamar, lowongan aktif, dll).
+- **UI/UX Modern**: Desain responsif berbasis Tailwind CSS dengan implementasi ikon SVG.
 
 ### Fixed
-- Resolusi anomali otorisasi untuk mencegah akses silang *role* pada rute yang dibatasi.
-- Perbaikan sistem validasi pada modul unggah dokumen, khususnya dalam menangani penolakan format CV atau gambar yang tidak didukung.
-- Optimalisasi tata letak responsif pada perangkat *mobile* guna memastikan stabilitas navigasi menu *sidebar*.
+- Menutup celah keamanan otorisasi *middleware* untuk mencegah akses rute antar-*role*.
+- Memperbaiki penanganan *error* pada saat validasi format dokumen (CV dan gambar) saat diunggah.
 
 ### Changed
-- Migrasi aset visual aplikasi dari emoji teks ke *library* SVG Heroicons guna meningkatkan konsistensi dan estetika antarmuka.
-- Restrukturisasi presentasi data pelamar dari format *grid* menjadi format tabel untuk mempermudah analisis data oleh pihak perusahaan.
-- Penyederhanaan formulir registrasi awal dengan merelokasi input data media sosial ke halaman pengaturan profil demi mempercepat pembuatan akun.
-- Optimalisasi mekanisme registrasi dengan menerapkan verifikasi akun otomatis guna mempercepat proses *onboarding* pengguna baru.
+- Menyederhanakan formulir registrasi awal untuk mempercepat proses *onboarding* pengguna baru.
+- Merombak presentasi daftar pelamar menggunakan format tabel agar mempermudah perusahaan melakukan analisis kandidat.
