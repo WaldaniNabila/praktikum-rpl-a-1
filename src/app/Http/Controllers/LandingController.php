@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
+    public function about()
+    {
+        return view('about');
+    }
+
     public function index()
     {
         $latestJobs = JobListing::with(['company', 'category'])

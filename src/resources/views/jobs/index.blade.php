@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto px-6 flex items-center h-14 gap-6">
             <a href="{{ route('home') }}" class="text-lg font-semibold text-blue-700 tracking-tight">JobHub</a>
             <a href="{{ route('jobs.index') }}" class="text-sm font-medium text-blue-700 border-b-2 border-blue-700 pb-0.5">Lowongan</a>
-            <a href="#" class="text-sm text-gray-500 hover:text-gray-800 transition-colors">Tentang kami</a>
+            <a href="{{ route('about') }}" class="text-sm text-gray-500 hover:text-gray-800 transition-colors">Tentang kami</a>
             <div class="flex-1"></div>
             @guest
                 <a href="{{ route('login') }}" class="text-sm px-4 py-1.5 rounded-lg border border-blue-300 text-blue-700 hover:bg-blue-50 transition-colors">Masuk</a>
@@ -31,11 +31,11 @@
             <h1 class="text-3xl font-semibold text-white mb-6">Temukan Pekerjaan Idealmu</h1>
             <form action="{{ route('jobs.index') }}" method="GET" class="flex flex-col sm:flex-row gap-3">
                 <div class="flex-1 bg-white rounded-xl flex items-center px-4 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400">
-                    <span class="text-gray-400">🔍</span>
+                    <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
                     <input type="text" name="q" value="{{ request('q') }}" placeholder="Posisi, keahlian, atau nama perusahaan..." class="w-full py-3 px-3 border-none outline-none focus:ring-0 text-sm text-gray-700">
                 </div>
                 <div class="sm:w-64 bg-white rounded-xl flex items-center px-4 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400">
-                    <span class="text-gray-400">📍</span>
+                    <svg class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
                     <input type="text" name="location" value="{{ request('location') }}" placeholder="Lokasi..." class="w-full py-3 px-3 border-none outline-none focus:ring-0 text-sm text-gray-700">
                 </div>
                 <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-xl transition-colors">Cari</button>
@@ -137,7 +137,7 @@
                     </div>
                 @empty
                     <div class="col-span-1 lg:col-span-2 text-center py-16 bg-white border border-gray-200 rounded-xl">
-                        <div class="text-4xl mb-4">🕵️‍♂️</div>
+                        <div class="flex justify-center mb-4"><svg class="w-16 h-16 text-gray-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
                         <h3 class="text-lg font-semibold text-gray-900">Lowongan tidak ditemukan</h3>
                         <p class="text-sm text-gray-500 mt-1">Coba ubah filter pencarian atau kata kunci Anda.</p>
                     </div>

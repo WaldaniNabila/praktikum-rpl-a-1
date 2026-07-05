@@ -78,7 +78,7 @@
                                     @empty
                                     <tr>
                                         <td colspan="5" class="py-12 text-center">
-                                            <div class="text-4xl mb-3">📭</div>
+                                            <div class="flex justify-center mb-3 text-slate-300"><svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.226-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 12.677a2.25 2.25 0 00-.1.661z" /></svg></div>
                                             <p class="text-slate-500 font-medium">Kamu belum melamar pekerjaan apapun.</p>
                                             <a href="{{ route('jobs.index') }}" class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition">Cari Lowongan</a>
                                         </td>
