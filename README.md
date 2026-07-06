@@ -267,7 +267,7 @@ Seluruh dokumentasi proyek tersedia di folder [`docs/`](./docs/):
 | [User Manual](./docs/user-manual.md)                 | Panduan penggunaan aplikasi             |
 | [Team Contract](./docs/team-contract.md)             | Kontrak kerja tim                       |
 | [Changelog](./CHANGELOG.md)                          | Riwayat perubahan versi aplikasi        |
-| [AI-Usage Log](./AI-USAGE-LOG.md)                    | Log penggunaan AI selama pengembangan   |
+| [AI-Usage Log](./docs/ai-usage-log.md)                    | Log penggunaan AI selama pengembangan   |
 
 ---
 
