@@ -1,15 +1,15 @@
 # JOBHUB — Platform Rekrutmen Online
 
-Proyek Praktikum Rekayasa Perangkat Lunak (RPL) — Kelompok A-1
+**Proyek Praktikum Rekayasa Perangkat Lunak (RPL) — Kelompok A-1**
 
-**JOBHUB** adalah platform rekrutmen online berbasis web yang menghubungkan pencari kerja dengan perusahaan secara langsung. Platform ini menyediakan alur rekrutmen end-to-end mulai dari posting lowongan, pencarian kerja, pengiriman lamaran, hingga pengelolaan status penerimaan. Dibangun menggunakan Laravel 12 dengan arsitektur multi-role (Pencari Kerja, Perusahaan, dan Administrator).
+**JOBHUB** adalah platform rekrutmen online komprehensif berbasis web yang dirancang untuk menjembatani pencari kerja dengan perusahaan secara efektif dan efisien. Platform ini menyediakan alur rekrutmen *end-to-end*, mulai dari pendaftaran akun, pembuatan lowongan, pengiriman lamaran, hingga pengelolaan status penerimaan kandidat. Sistem ini dibangun dengan arsitektur *multi-role* yang memisahkan hak akses secara tegas untuk **Pencari Kerja, Perusahaan, dan Administrator**.
 
 ---
 
 ## Daftar Fitur Utama
 
 ### Autentikasi dan Otorisasi
-- Registrasi akun dengan pilihan role (Pencari Kerja / Perusahaan) dan verifikasi instan
+- Registrasi akun dengan pilihan role (Pencari Kerja / Perusahaan) 
 - Login, logout, lupa password, dan reset password
 - Role-based access control untuk tiga role utama
 
@@ -45,23 +45,26 @@ Proyek Praktikum Rekayasa Perangkat Lunak (RPL) — Kelompok A-1
 
 ## Screenshot Aplikasi
 
+### Landing Page / Halaman Utama
+![Landing Page](./docs/screenshots/landing-page.png)
+
+### Halaman Login
+![Login](./docs/screenshots/login.png)
+
+### Halaman Registrasi
+![Register](./docs/screenshots/register.png)
+
 ### Dashboard Pencari Kerja
-![Dashboard Pencari Kerja](./docs/screenshots/tc001.png)
+![Job Seeker Dashboard](./docs/screenshots/jobseeker-dashboard.png)
 
 ### Detail Lowongan Pekerjaan
-![Detail Lowongan](./docs/screenshots/tc006.png)
+![Detail Lowongan](./docs/screenshots/detail-lowongan.png)
 
 ### Dashboard Perusahaan
-![Dashboard Perusahaan](./docs/screenshots/tc003.png)
+![Company Dashboard](./docs/screenshots/company-dashboard.png)
 
-### Manajemen Pelamar (Perusahaan)
-![Daftar Pelamar](./docs/screenshots/tc013.png)
-
-### Manajemen Lowongan (Admin)
-![Kelola Lowongan Admin](./docs/screenshots/tc015.png)
-
-### Manajemen Perusahaan (Admin)
-![Kelola Perusahaan Admin](./docs/screenshots/tc017.png)
+### Dashboard Administrator
+![Admin Dashboard](./docs/screenshots/admin-dashboard.png)
 
 ---
 
@@ -239,12 +242,12 @@ praktikum-rpl-a-1/
 
 ## Anggota Tim
 
-| Nama               | NIM       |
-|--------------------|-----------|
-| Argya Seno         | L0124004  |
-| Intan Trinanda     | L0124018  |
-| Izanahda Nurkhasna | L0124019  |
-| Waldani Nabila     | L0124122  |
+| Nama | NIM | Peran | Tanggung Jawab Utama |
+| :--- | :--- | :--- | :--- |
+| **Argya Seno** | L0124004 | Back-End Developer & PM | Arsitektur database, Eloquent Model, API Controller, Middleware, Unit Test, koordinasi tim |
+| **Intan Trinanda** | L0124018 | Business Analyst & Dokumentasi | User Stories, Problem Statement, Backlog, notulensi tim |
+| **Izanahda Nurkhasna** | L0124019 | Full-Stack (Auth & Data) | Autentikasi UI, Data Dictionary, SRS, perbaikan fitur bookmark & job seeker |
+| **Waldani Nabila** | L0124122 | Front-End Developer | UI/UX Tailwind (Dashboard, Auth, Register), manajemen repo & PR |
 
 ---
 
